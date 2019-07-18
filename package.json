@@ -1,0 +1,14 @@
+{
+    "name": "checkerframework-language-server",
+    "description": "VSCode part of a language server",
+    "author": "",
+    "license": "",
+    "version": "0.0.1",
+    "publisher": "",
+    "categories": [
+        "Linters"
+    ],
+    "activationEvents": [
+        "onLanguage:java"
+    ]
+}
