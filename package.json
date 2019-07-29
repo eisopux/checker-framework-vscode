@@ -4,6 +4,10 @@
     "author": "zhangjiangqige",
     "license": "",
     "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zhangjiangqige/checker-framework-vscode.git"
+    },
     "publisher": "zhangjiangqige",
     "categories": [
         "Linters"
@@ -17,10 +21,10 @@
     "devDependencies": {
         "vscode": "^1.1.35"
     },
-    "main": "./out/extension",
     "activationEvents": [
         "onLanguage:java"
     ],
+    "main": "./out/extension",
     "contributes": {
         "configuration": {
             "type": "object",
@@ -51,5 +55,13 @@
                 }
             }
         }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "lint": "tslint -p ./",
+        "watch": "tsc -watch -p ./",
+        "update-vscode": "vscode-install",
+        "postinstall": "vscode-install"
     }
 }
