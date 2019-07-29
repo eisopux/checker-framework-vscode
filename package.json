@@ -8,13 +8,19 @@
     "categories": [
         "Linters"
     ],
-    "activationEvents": [
-        "onLanguage:java"
-    ],
     "engines": {
         "vscode": "^1.23.0"
     },
+    "dependencies": {
+        "vscode-languageclient": "^4.1.4"
+    },
+    "devDependencies": {
+        "vscode": "^1.1.35"
+    },
     "main": "./out/extension",
+    "activationEvents": [
+        "onLanguage:java"
+    ],
     "contributes": {
         "configuration": {
             "type": "object",
