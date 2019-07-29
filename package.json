@@ -1,14 +1,49 @@
 {
     "name": "checkerframework-language-server",
-    "description": "VSCode part of a language server",
-    "author": "",
+    "description": "Language server of the Checker Framework",
+    "author": "zhangjiangqige",
     "license": "",
     "version": "0.0.1",
-    "publisher": "",
+    "publisher": "zhangjiangqige",
     "categories": [
         "Linters"
     ],
     "activationEvents": [
         "onLanguage:java"
-    ]
+    ],
+    "engines": {
+        "vscode": "^1.23.0"
+    },
+    "main": "./out/extension",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Checker Framework configuration",
+            "properties": {
+                "checker-framework.checkers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "org.checkerframework.checker.nullness.NullnessChecker"
+                    ],
+                    "description": "List of checkers enabled for compilation. More details in: https://checkerframework.org/manual/#running"
+                },
+                "checker-framework.frameworkPath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path of the Checker Framework."
+                },
+                "checker-framework.commandLineOptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "description": "List of command line options that gets passed in to javac. See available options in: https://checkerframework.org/manual/#running"
+                }
+            }
+        }
+    }
 }
