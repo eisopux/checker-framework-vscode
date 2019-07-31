@@ -2,7 +2,7 @@
     "name": "checkerframework-language-server",
     "description": "Language server of the Checker Framework",
     "author": "zhangjiangqige",
-    "license": "",
+    "license": "MIT",
     "version": "0.0.1",
     "repository": {
         "type": "git",
@@ -16,12 +16,12 @@
         "vscode": "^1.33.0"
     },
     "dependencies": {
-        "vscode": "^1.1.35",
-        "vscode-languageclient": "^5.0.0"
+        "vscode": "^1.1.33",
+        "vscode-languageclient": "^5.2.1"
     },
     "devDependencies": {
-        "@types/node": "^10.14.6",
-        "typescript": "^3.5.1"
+        "@types/node": "^12.6.8",
+        "typescript": "^3.5.3"
     },
     "activationEvents": [
         "onLanguage:java"
@@ -47,6 +47,11 @@
                     "default": "",
                     "description": "Absolute path of the Checker Framework."
                 },
+                "checker-framework.fatjarPath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Absolute path of the Checker Framework language server."
+                },
                 "checker-framework.commandLineOptions": {
                     "type": "array",
                     "items": {
@@ -61,9 +66,7 @@
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
-        "lint": "tslint -p ./",
-        "watch": "tsc -watch -p ./",
-        "update-vscode": "vscode-install",
-        "postinstall": "vscode-install"
+        "update-vscode": "node ./node_modules/vscode/bin/install",
+        "postinstall": "node ./node_modules/vscode/bin/install"
     }
 }

@@ -3,41 +3,47 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
 
-import * as fs from "fs"
+import * as fs from "fs";
 import * as path from 'path';
 
-import { workspace, ExtensionContext } from 'vscode';
-import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
+import * as vscode from 'vscode';
+import * as vscodelc from 'vscode-languageclient';
 
-export function activate(context: ExtensionContext) {
-    let serverOptions: ServerOptions = {
+export function activate(context: vscode.ExtensionContext) {
+    let serverOptions: vscodelc.ServerOptions = {
         command: findJavaExecutable('java'),
-        args: [],
-        options: { cwd: workspace.workspaceFolders[0].uri.toString() }
-    }
+        args: getServerArgs(),
+    };
+
+    console.log(serverOptions);
 
     // Options to control the language client
-    let clientOptions: LanguageClientOptions = {
+    let clientOptions: vscodelc.LanguageClientOptions = {
         // Register the server for java documents
         documentSelector: ['java'],
         synchronize: {
             // Synchronize the setting section 'languageServerExample' to the server
             configurationSection: 'checker-framework',
             // Notify the server about file changes to '.java' files contain in the workspace
-            fileEvents: workspace.createFileSystemWatcher('**/*.java')
+            fileEvents: vscode.workspace.createFileSystemWatcher('**/*.java')
         }
     }
 
     // Create the language client and start the client.
-    let disposable = new LanguageClient('checker-framework', 'Checker Framework', serverOptions, clientOptions).start();
+    let disposable = new vscodelc.LanguageClient('checker-framework', 'Checker Framework', serverOptions, clientOptions).start();
 
     // Push the disposable to the context's subscriptions so that the
     // client can be deactivated on extension deactivation
     context.subscriptions.push(disposable);
 }
 
-function serverArgs() {
-    return [];
+function getServerArgs() {
+    let frameworkPath = getConfig<string>('frameworkPath');
+    let checkerPath = path.join(frameworkPath, 'checker/dist/checker.jar');
+    let fatJarPath = getConfig<string>('fatjarPath');
+    let classpath = ['.', checkerPath, fatJarPath].join(':');
+    let mainClass = 'org.checkerframework.languageserver.ServerMain';
+    return ['-cp', classpath, mainClass];
 }
 
 // MIT Licensed code from: https://github.com/georgewfraser/vscode-javac
@@ -75,4 +81,8 @@ function correctBinname(binname: string) {
         return binname + '.exe';
     else
         return binname;
+}
+
+function getConfig<T>(name: string): T {
+    return vscode.workspace.getConfiguration('checker-framework').get<T>(name);
 }
