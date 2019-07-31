@@ -9,6 +9,8 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import * as vscodelc from 'vscode-languageclient';
 
+import * as strings from './strings';
+
 export function activate(context: vscode.ExtensionContext) {
     let serverOptions: vscodelc.ServerOptions = {
         command: findJavaExecutable('java'),
@@ -23,14 +25,14 @@ export function activate(context: vscode.ExtensionContext) {
         documentSelector: ['java'],
         synchronize: {
             // Synchronize the setting section 'languageServerExample' to the server
-            configurationSection: 'checker-framework',
+            configurationSection: strings.Misc.pluginID,
             // Notify the server about file changes to '.java' files contain in the workspace
             fileEvents: vscode.workspace.createFileSystemWatcher('**/*.java')
         }
     }
 
     // Create the language client and start the client.
-    let disposable = new vscodelc.LanguageClient('checker-framework', 'Checker Framework', serverOptions, clientOptions).start();
+    let disposable = new vscodelc.LanguageClient(strings.Misc.pluginID, strings.Misc.pluginName, serverOptions, clientOptions).start();
 
     // Push the disposable to the context's subscriptions so that the
     // client can be deactivated on extension deactivation
@@ -39,10 +41,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 function getServerArgs() {
     let frameworkPath = getConfig<string>('frameworkPath');
-    let checkerPath = path.join(frameworkPath, 'checker/dist/checker.jar');
+    let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
     let fatJarPath = getConfig<string>('fatjarPath');
     let classpath = ['.', checkerPath, fatJarPath].join(':');
-    let mainClass = 'org.checkerframework.languageserver.ServerMain';
+    let mainClass = strings.Misc.serverMainClass;
     return ['-cp', classpath, mainClass];
 }
 
@@ -84,5 +86,5 @@ function correctBinname(binname: string) {
 }
 
 function getConfig<T>(name: string): T {
-    return vscode.workspace.getConfiguration('checker-framework').get<T>(name);
+    return vscode.workspace.getConfiguration(strings.Misc.pluginID).get<T>(name);
 }
