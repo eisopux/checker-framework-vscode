@@ -16,11 +16,12 @@
         "vscode": "^1.33.0"
     },
     "dependencies": {
+        "vscode": "^1.1.35",
         "vscode-languageclient": "^5.0.0"
     },
     "devDependencies": {
-        "vscode": "^1.1.35",
-        "@types/node": "^10.14.6"
+        "@types/node": "^10.14.6",
+        "typescript": "^3.5.1"
     },
     "activationEvents": [
         "onLanguage:java"
