@@ -14,7 +14,7 @@ export class Installer {
 
     public basePath = this.resolvePath(path.join(__dirname, '..', 'download'));
     private cfDownloadFile = this.resolvePath(path.join(this.basePath, strings.Misc.checkerFrameworkZip));
-    private serverDownloadFile = this.resolvePath(path.join(this.basePath, strings.Misc.languageServerFatJar));
+    private langserverDownloadFile = this.resolvePath(path.join(this.basePath, strings.Misc.languageServerFatJar));
 
     private UA = 'Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0';
 
@@ -35,20 +35,40 @@ export class Installer {
             strings.Misc.checkerRelPath);
     }
 
-    public isInstalled(): boolean {
+    public getLanguageServerPath(): string {
+        return this.langserverDownloadFile;
+    }
+
+    public isServerInstalled(): boolean {
+        return fs.existsSync(this.langserverDownloadFile);
+    }
+
+    public isCheckerInstalled(): boolean {
         return fs.existsSync(this.getCheckerPath());
     }
 
-    public async install(): Promise<string> {
+    public async installServer(): Promise<string> {
         try {
-            this.uninstall();
             if (!fs.existsSync(this.basePath)) {
                 fs.mkdirSync(this.basePath);
             }
-            console.log('basePath: ' + this.basePath);
+            fs.unlink(this.langserverDownloadFile, (err) => {});
+            await this.download(strings.Misc.languageServerURL, this.langserverDownloadFile);
+            return Promise.resolve(this.langserverDownloadFile);
+        } catch (e) {
+            console.error(e);
+            return Promise.reject(e);
+        }
+    }
+
+    public async installChecker(): Promise<string> {
+        try {
+            if (!fs.existsSync(this.basePath)) {
+                fs.mkdirSync(this.basePath);
+            }
             await this.downloadCheckerFramework();
             await this.extract(this.cfDownloadFile);
-            return Promise.resolve(this.basePath);
+            return Promise.resolve(this.getFrameworkPath());
         } catch (e) {
             console.error(e);
             return Promise.reject(e);
@@ -69,7 +89,6 @@ export class Installer {
     }
 
     private resolvePath(str: string) {
-
         if (str.substr(0, 2) === '~/') {
             str = (process.env.HOME || process.env.HOMEPATH || process.env.HOMEDIR || process.cwd()) + str.substr(1);
         }
