@@ -10,38 +10,63 @@ import * as vscode from 'vscode';
 import * as vscodelc from 'vscode-languageclient';
 
 import * as strings from './strings';
+import { Installer } from './installer';
 
 export function activate(context: vscode.ExtensionContext) {
-    let serverOptions: vscodelc.ServerOptions = {
-        command: findJavaExecutable('java'),
-        args: getServerArgs(),
-    };
-
-    console.log(serverOptions);
-
-    // Options to control the language client
-    let clientOptions: vscodelc.LanguageClientOptions = {
-        // Register the server for java documents
-        documentSelector: ['java'],
-        synchronize: {
-            // Synchronize the setting section 'languageServerExample' to the server
-            configurationSection: strings.Misc.pluginID,
-            // Notify the server about file changes to '.java' files contain in the workspace
-            fileEvents: vscode.workspace.createFileSystemWatcher('**/*.java')
+    let frameworkPath = getConfig<string>('frameworkPath');
+    // if not specified, use the default
+    if (frameworkPath) {
+        let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
+        console.log('Using local checker framework', checkerPath);
+        launch(checkerPath);
+    } else {
+        let installer = new Installer();
+        if (installer.isInstalled()) {
+            let checkerPath = installer.getCheckerPath();
+            console.log('Using installed checker framework', checkerPath);
+            launch(checkerPath);
+        } else {
+            installer.install().then(() => {
+                let checkerPath = installer.getCheckerPath();
+                console.log('Using downloaded checker framework', checkerPath);
+                vscode.workspace
+                    .getConfiguration(strings.Misc.pluginID)
+                    .update('frameworkPath', installer.getFrameworkPath());
+                launch(checkerPath);
+            });
         }
     }
 
-    // Create the language client and start the client.
-    let disposable = new vscodelc.LanguageClient(strings.Misc.pluginID, strings.Misc.pluginName, serverOptions, clientOptions).start();
+    function launch(checkerPath: string) {
+        let serverOptions: vscodelc.ServerOptions = {
+            command: findJavaExecutable('java'),
+            args: getServerArgs(checkerPath),
+        };
 
-    // Push the disposable to the context's subscriptions so that the
-    // client can be deactivated on extension deactivation
-    context.subscriptions.push(disposable);
+        console.log('serverOption', serverOptions);
+
+        // Options to control the language client
+        let clientOptions: vscodelc.LanguageClientOptions = {
+            // Register the server for java documents
+            documentSelector: ['java'],
+            synchronize: {
+                // Synchronize the setting section 'languageServerExample' to the server
+                configurationSection: strings.Misc.pluginID,
+                // Notify the server about file changes to '.java' files contain in the workspace
+                fileEvents: vscode.workspace.createFileSystemWatcher('**/*.java')
+            }
+        }
+
+        // Create the language client and start the client.
+        let disposable = new vscodelc.LanguageClient(strings.Misc.pluginID, strings.Misc.pluginName, serverOptions, clientOptions).start();
+
+        // Push the disposable to the context's subscriptions so that the
+        // client can be deactivated on extension deactivation
+        context.subscriptions.push(disposable);
+    }
 }
 
-function getServerArgs() {
-    let frameworkPath = getConfig<string>('frameworkPath');
-    let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
+function getServerArgs(checkerPath: string) {
     let fatJarPath = getConfig<string>('fatjarPath');
     let classpath = ['.', checkerPath, fatJarPath].join(':');
     let mainClass = strings.Misc.serverMainClass;
