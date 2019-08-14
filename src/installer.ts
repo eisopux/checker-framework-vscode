@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as https from 'https';
 import * as path from 'path';
 
+import * as vscode from 'vscode';
 import uri from 'vscode-uri';
 import * as DecompressZip from 'decompress-zip';
 import { https as redirect } from "follow-redirects";
@@ -110,36 +111,53 @@ export class Installer {
     }
 
     private download(url: string, filePath: string): Promise<boolean> {
-        return new Promise<any>((resolve, reject) => {
-            try {
-                const options: https.RequestOptions = {
-                    headers: {
-                        'User-Agent': this.UA,
-                    },
-                    host: uri.parse(url).authority,
-                    path: uri.parse(url).path,
-                };
+        const options: https.RequestOptions = {
+            headers: {
+                'User-Agent': this.UA,
+            },
+            host: uri.parse(url).authority,
+            path: uri.parse(url).path,
+        };
 
-                const file = fs.createWriteStream(filePath);
-                console.log('downloading', url, 'to', filePath);
-                const request = redirect.get(options, (response: any) => {
-                    response.pipe(file);
+        const file = fs.createWriteStream(filePath);
+        console.log('downloading', url, 'to', filePath);
 
-                    file.on('finish', () => {
-                        file.close();
-                        return resolve(true);
+        return new Promise<boolean>((resolve, reject) => {
+            vscode.window.withProgress({
+                location: vscode.ProgressLocation.Notification,
+                title: 'Downloading ' + url,
+                cancellable: false
+            }, (progress, token) => {
+                var p = new Promise((resolve, reject) => {
+                    const request = redirect.get(options, (response: any) => {
+                        response.pipe(file);
+                        const len = parseInt(response.headers['content-length'], 10);
+                        let cur = 0;
+                        response.on('data', (chunk: string) => {
+                            cur += chunk.length;
+                            progress.report({
+                                increment: 100.0 * chunk.length / len,
+                                message: cur + '/' + len
+                            });
+                        });
+
+                        file.on('finish', () => {
+                            file.close();
+                            resolve();
+                        });
+                    });
+                    request.on('error', (err: Error) => {
+                        fs.unlink(filePath, (err) => { });
+                        reject(err);
                     });
                 });
-                request.on('error', (err: Error) => {
-                    fs.unlink(filePath, (err) => {});
-                    throw err;
-                });
-            } catch (e) {
-                console.error('Error downloading ' + url + ': ' + e);
-                return reject(false);
-            }
+                return p;
+            }).then(value => {
+                resolve(true);
+            }, reason => {
+                reject(reason);
+            });
         });
-
     }
 
     private extract(filePath: string): Promise<boolean> {

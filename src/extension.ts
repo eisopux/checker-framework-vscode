@@ -21,6 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
     let languageServerPath = '';
 
     if (!serverInstalled) {
+        // TODO: handle failure
         installer.installServer().then((serverPath) => {
             serverInstalled = true;
             languageServerPath = serverPath;
@@ -50,6 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
             checkerInstalled = true;
             tryLaunch();
         } else {
+            // TODO: handle failure
             installer.installChecker().then(() => {
                 checkerPath = installer.getCheckerPath();
                 console.log('Using downloaded checker framework', checkerPath);
