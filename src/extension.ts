@@ -13,54 +13,63 @@ import * as strings from './strings';
 import { Installer } from './installer';
 
 export function activate(context: vscode.ExtensionContext) {
-    // TODO: make the installation process tidier
-    let installer = new Installer();
-    let serverInstalled = installer.isServerInstalled();
+    let serverInstalled = false;
     let checkerInstalled = false;
-    let checkerPath = '';
-    let languageServerPath = '';
+    let installer = new Installer();
 
-    if (!serverInstalled) {
-        // TODO: handle failure
-        installer.installServer().then((serverPath) => {
-            serverInstalled = true;
-            languageServerPath = serverPath;
-            vscode.workspace
-                .getConfiguration(strings.Misc.pluginID)
-                .update('fatjarPath', serverPath);
-            console.log('Using downloaded language server', serverPath);
-            tryLaunch();
-        });
-    } else {
-        languageServerPath = installer.getLanguageServerPath();
-        console.log('Using installed language server', languageServerPath);
+    // If specified in conf, use conf, otherwise download & install
+    let languageServerPath = getConfig<string>('languageServerPath');
+    let frameworkPath = getConfig<string>('frameworkPath');
+
+    // Language server
+    console.log('Looking for language server at', languageServerPath);
+    if (languageServerPath && fs.existsSync(languageServerPath)) {
+        console.log('Using local language server', languageServerPath);
+        serverInstalled = true;
         tryLaunch();
+    } else {
+        if (!languageServerPath) {
+            // not specified, download
+            console.log('Language server not specified, will download');
+            installer.installServer().then((serverPath) => {
+                serverInstalled = true;
+                languageServerPath = serverPath;
+                setConfig('languageServerPath', serverPath);
+                console.log('Using downloaded language server', serverPath);
+                tryLaunch();
+            }).catch((reason) => {
+                vscode.window.showErrorMessage('Failed to install language server: ' + reason);
+            });
+        } else {
+            // specified but not exists, ask to correct & reload
+            vscode.window.showErrorMessage('Language server is not found at ' + languageServerPath + ' which is specified in your configuration. Please correct or remove this section and reload VS Code.');
+        }
     }
 
-    let frameworkPath = getConfig<string>('frameworkPath');
-    // if not specified, use the default
-    if (frameworkPath) {
-        checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
+    // Checker framework
+    console.log('Looking for checker framework at', frameworkPath);
+    let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
+    if (frameworkPath && fs.existsSync(checkerPath)) {
         console.log('Using local checker framework', checkerPath);
         checkerInstalled = true;
         tryLaunch();
     } else {
-        if (installer.isCheckerInstalled()) {
-            checkerPath = installer.getCheckerPath();
-            console.log('Using installed checker framework', checkerPath);
-            checkerInstalled = true;
-            tryLaunch();
-        } else {
-            // TODO: handle failure
-            installer.installChecker().then(() => {
-                checkerPath = installer.getCheckerPath();
-                console.log('Using downloaded checker framework', checkerPath);
-                vscode.workspace
-                    .getConfiguration(strings.Misc.pluginID)
-                    .update('frameworkPath', installer.getFrameworkPath());
+        if (!frameworkPath) {
+            // not specified, download
+            console.log('Checker framework not specified, will download');
+            installer.installChecker().then((cfPath) => {
                 checkerInstalled = true;
+                frameworkPath = cfPath;
+                checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
+                setConfig('frameworkPath', frameworkPath);
+                console.log('Using downloaded checker framework', frameworkPath);
                 tryLaunch();
+            }).catch((reason) => {
+                vscode.window.showErrorMessage('Failed to install Checker framework: ' + reason);
             });
+        } else {
+            // specified but not exists, ask to correct & reload
+            vscode.window.showErrorMessage('Checker framework is not found at ' + frameworkPath + ' which is specified in your configuration. Please correct or remove this section and reload VS Code.');
         }
     }
 
@@ -98,8 +107,8 @@ export function activate(context: vscode.ExtensionContext) {
     }
 }
 
-function getServerArgs(checkerPath: string, fatJarPath: string) {
-    let classpath = ['.', checkerPath, fatJarPath].join(':');
+function getServerArgs(checkerPath: string, fatjarPath: string) {
+    let classpath = ['.', checkerPath, fatjarPath].join(':');
     let mainClass = strings.Misc.serverMainClass;
     return ['-cp', classpath, mainClass];
 }
@@ -143,4 +152,8 @@ function correctBinname(binname: string) {
 
 function getConfig<T>(name: string): T {
     return vscode.workspace.getConfiguration(strings.Misc.pluginID).get<T>(name);
+}
+
+function setConfig<T>(name: string, value: any) {
+    vscode.workspace.getConfiguration(strings.Misc.pluginID).update(name, value);
 }

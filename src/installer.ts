@@ -40,14 +40,6 @@ export class Installer {
         return this.langserverDownloadFile;
     }
 
-    public isServerInstalled(): boolean {
-        return fs.existsSync(this.langserverDownloadFile);
-    }
-
-    public isCheckerInstalled(): boolean {
-        return fs.existsSync(this.getCheckerPath());
-    }
-
     public async installServer(): Promise<string> {
         try {
             if (!fs.existsSync(this.basePath)) {

@@ -50,10 +50,10 @@
                     "default": "",
                     "description": "Absolute path of the Checker Framework."
                 },
-                "checker-framework.fatjarPath": {
+                "checker-framework.languageServerPath": {
                     "type": "string",
                     "default": "",
-                    "description": "Absolute path of the Checker Framework language server."
+                    "description": "Absolute path to the fat jar of the Checker Framework language server."
                 },
                 "checker-framework.commandLineOptions": {
                     "type": "array",
