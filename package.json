@@ -18,13 +18,13 @@
     "dependencies": {
         "decompress-zip": "^0.3.2",
         "follow-redirects": "^1.7.0",
-        "vscode": "^1.1.33",
         "vscode-languageclient": "^5.2.1",
         "vscode-uri": "^1.0.8"
     },
     "devDependencies": {
         "@types/node": "^12.6.8",
-        "typescript": "^3.5.3"
+        "typescript": "^3.5.3",
+        "vscode": "^1.1.33"
     },
     "activationEvents": [
         "onLanguage:java"
