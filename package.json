@@ -3,7 +3,7 @@
     "description": "Language server of the Checker Framework",
     "author": "zhangjiangqige",
     "license": "MIT",
-    "version": "0.0.1",
+    "version": "0.0.4",
     "repository": {
         "type": "git",
         "url": "https://github.com/zhangjiangqige/checker-framework-vscode.git"
