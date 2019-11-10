@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/eisopux/checker-framework-vscode.git"
     },
-    "publisher": "eisopux",
+    "publisher": "zhangjiangqige",
     "categories": [
         "Linters"
     ],
