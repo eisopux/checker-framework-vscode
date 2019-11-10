@@ -114,7 +114,7 @@ function downloadDeps(callback: Function) {
 }
 
 function getServerArgs(checkerPath: string, fatjarPath: string) {
-    let classpath = ['.', checkerPath, fatjarPath].join(':');
+    let classpath = ['.', checkerPath, fatjarPath].join(path.delimiter);
     let mainClass = strings.Misc.serverMainClass;
     return ['-cp', classpath, mainClass];
 }
