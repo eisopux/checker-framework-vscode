@@ -1,14 +1,14 @@
 {
     "name": "checkerframework-language-server",
     "description": "Language server of the Checker Framework",
-    "author": "zhangjiangqige",
+    "author": "eisopux",
     "license": "MIT",
     "version": "0.0.4",
     "repository": {
         "type": "git",
-        "url": "https://github.com/zhangjiangqige/checker-framework-vscode.git"
+        "url": "https://github.com/eisopux/checker-framework-vscode.git"
     },
-    "publisher": "zhangjiangqige",
+    "publisher": "eisopux",
     "categories": [
         "Linters"
     ],
