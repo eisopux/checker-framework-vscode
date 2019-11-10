@@ -3,7 +3,7 @@
     "description": "Language server of the Checker Framework",
     "author": "eisopux",
     "license": "MIT",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "repository": {
         "type": "git",
         "url": "https://github.com/eisopux/checker-framework-vscode.git"
