@@ -17,8 +17,8 @@ export function activate(context: vscode.ExtensionContext) {
     let checkerInstalled = false;
 
     // If specified in conf, use conf, otherwise download & install
-    let languageServerPath = getConfig<string>('languageServerPath');
-    let frameworkPath = getConfig<string>('frameworkPath');
+    let languageServerPath = getConfig<string>(strings.Misc.optLanguageServerPath);
+    let frameworkPath = getConfig<string>(strings.Misc.optFrameworkpath);
     let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
 
     console.log('Looking for language server at', languageServerPath);
@@ -116,7 +116,22 @@ function downloadDeps(callback: Function) {
 function getServerArgs(checkerPath: string, fatjarPath: string) {
     let classpath = ['.', checkerPath, fatjarPath].join(path.delimiter);
     let mainClass = strings.Misc.serverMainClass;
-    return ['-cp', classpath, mainClass];
+    let args = [
+        '-cp',
+        classpath,
+        mainClass,
+        '-' + strings.Misc.optFrameworkpath,
+        getConfig<string>(strings.Misc.optFrameworkpath)
+    ];
+    getConfig<Array<string>>(strings.Misc.optCheckers).forEach(c => {
+        args.push('-' + strings.Misc.optCheckers);
+        args.push(c);
+    });
+    getConfig<Array<string>>(strings.Misc.optCommandLineOptions).forEach(c => {
+        args.push('-' + strings.Misc.optCommandLineOptions);
+        args.push(c);
+    });
+    return args;
 }
 
 // MIT Licensed code from: https://github.com/georgewfraser/vscode-javac
