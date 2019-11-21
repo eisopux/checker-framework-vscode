@@ -34,16 +34,16 @@ export function activate(context: vscode.ExtensionContext) {
     if (!serverInstalled || !checkerInstalled) {
         console.log('Server installed:', serverInstalled, ', Checker installed:', checkerInstalled);
         vscode.window.showInformationMessage('Downloading dependencies...');
-        downloadDeps((server: string, cf: string) => {
+        downloadDeps(async (server: string, cf: string) => {
             console.log('Downloaded', server, 'and', cf);
             if (!serverInstalled) {
                 languageServerPath = server;
-                setConfig('languageServerPath', languageServerPath);
+                await setConfig(strings.Misc.optLanguageServerPath, languageServerPath);
             }
             if (!checkerInstalled) {
                 frameworkPath = cf;
                 checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
-                setConfig('frameworkPath', frameworkPath);
+                await setConfig(strings.Misc.optFrameworkpath, frameworkPath);
             }
             vscode.window.showInformationMessage('Finished downloading');
             launchLS();
@@ -175,6 +175,6 @@ function getConfig<T>(name: string): T {
     return vscode.workspace.getConfiguration(strings.Misc.pluginID).get<T>(name);
 }
 
-function setConfig<T>(name: string, value: any) {
-    vscode.workspace.getConfiguration(strings.Misc.pluginID).update(name, value);
+function setConfig<T>(name: string, value: any): Thenable<void> {
+    return vscode.workspace.getConfiguration(strings.Misc.pluginID).update(name, value);
 }
