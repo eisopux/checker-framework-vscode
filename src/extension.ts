@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
 
-import * as fs from "fs";
+import * as fs from 'fs';
 import * as path from 'path';
 import * as child from 'child_process';
 
@@ -11,6 +11,7 @@ import * as vscode from 'vscode';
 import * as vscodelc from 'vscode-languageclient';
 
 import * as strings from './strings';
+import * as findjava from './findjava';
 
 export function activate(context: vscode.ExtensionContext) {
     let serverInstalled = false;
@@ -52,7 +53,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     function launchLS() {
         let serverOptions: vscodelc.ServerOptions = {
-            command: findJavaExecutable('java'),
+            command: findjava.findJavaExecutable('java'),
             args: getServerArgs(checkerPath, languageServerPath),
         };
 
@@ -132,43 +133,6 @@ function getServerArgs(checkerPath: string, fatjarPath: string) {
         args.push(c);
     });
     return args;
-}
-
-// MIT Licensed code from: https://github.com/georgewfraser/vscode-javac
-function findJavaExecutable(binname: string) {
-    binname = correctBinname(binname);
-
-    // First search each JAVA_HOME bin folder
-    if (process.env['JAVA_HOME']) {
-        let workspaces = process.env['JAVA_HOME'].split(path.delimiter);
-        for (let i = 0; i < workspaces.length; i++) {
-            let binpath = path.join(workspaces[i], 'bin', binname);
-            if (fs.existsSync(binpath)) {
-                return binpath;
-            }
-        }
-    }
-
-    // Then search PATH parts
-    if (process.env['PATH']) {
-        let pathparts = process.env['PATH'].split(path.delimiter);
-        for (let i = 0; i < pathparts.length; i++) {
-            let binpath = path.join(pathparts[i], binname);
-            if (fs.existsSync(binpath)) {
-                return binpath;
-            }
-        }
-    }
-
-    // Else return the binary name directly (this will likely always fail downstream)
-    return null;
-}
-
-function correctBinname(binname: string) {
-    if (process.platform === 'win32')
-        return binname + '.exe';
-    else
-        return binname;
 }
 
 function getConfig<T>(name: string): T {
