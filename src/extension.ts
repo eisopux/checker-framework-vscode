@@ -81,7 +81,20 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function downloadDeps(callback: Function) {
-    let args = ['-jar', path.join(__dirname, '..', '/checker-framework-languageserver-downloader-all.jar'), path.join(__dirname, '..', 'download')]
+    let args = [
+        '-jar',
+        path.join(__dirname, '..', '/checker-framework-languageserver-downloader-0.2.0.jar'),
+        '-dest',
+        path.join(__dirname, '..', 'download'),
+        '-' + strings.Misc.optCFOrg,
+        getConfig<string>(strings.Misc.optCFOrg),
+        '-' + strings.Misc.optCFRepo,
+        getConfig<string>(strings.Misc.optCFRepo),
+        '-' + strings.Misc.optLSOrg,
+        getConfig<string>(strings.Misc.optLSOrg),
+        '-' + strings.Misc.optLSRepo,
+        getConfig<string>(strings.Misc.optLSRepo)
+    ]
     console.log('spawnning downloader, args:', args);
     let prc = child.spawn('java', args);
 
@@ -91,7 +104,7 @@ function downloadDeps(callback: Function) {
     prc.stderr.on('data', function (data) {
         let str = data.toString()
         let lines = str.split(/(\r?\n)/g);
-        console.log('err:', lines.join(""));
+        console.log('stderr:', lines.join(""));
     });
 
     prc.stdout.on('data', function (data) {

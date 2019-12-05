@@ -7,4 +7,8 @@ export class Misc {
     public static optFrameworkpath: string = 'frameworkPath';
     public static optCheckers: string = 'checkers';
     public static optCommandLineOptions: string = 'commandLineOptions';
+    public static optCFOrg: string = 'checkerframework_org';
+    public static optCFRepo: string = 'checkerframework_repo';
+    public static optLSOrg: string = 'languageserver_org';
+    public static optLSRepo: string = 'languageserver_repo';
 }

@@ -16,7 +16,7 @@ JDK is required, i.e. `JAVA_HOME` needs to be properly set. Versions supported a
 
 Several parameters are available:
 
-#### checker-framework.checkers
+#### checkers
 
 This is a list of checkers that you want to use to check source files. Shorthand names and long full names are both supported. The list of all checkers can be found in the [manual](https://checkerframework.org/manual) of Checker Framework.
 
@@ -27,7 +27,7 @@ This is a list of checkers that you want to use to check source files. Shorthand
 ]
 ```
 
-#### checker-framework.commandLineOptions
+#### commandLineOptions
 
 This is a list of command line options that will be passed to the Checker Framework, which are options of a normal javac.
 
@@ -39,7 +39,7 @@ Sample setting:
 ]
 ```
 
-#### checker-framework.frameworkPath
+#### frameworkPath
 
 This is the path to the root folder of Checker Framework that's going to be used. Normally it's the directory obtained after unzipping the zip downloaded. By default, this extension will set this up for you.
 
@@ -49,7 +49,7 @@ Sample setting:
 "checker-framework.frameworkPath": "/Users/joe/env/checker-framework-3.0.0"
 ```
 
-#### checker-framework.languageServerPath
+#### languageServerPath
 
 This is the path of the jar file of the language server. This will usually be set up automatically.
 
@@ -57,6 +57,50 @@ Sample setting:
 
 ```
 "checker-framework.languageServerPath": "/Users/bob/env/checker-framework-languageserver-all.jar"
+```
+
+### checkerframework_org
+
+This specifies from which Github organization to download Checker Framework. The default is `typetools`.
+
+Sample setting:
+
+```
+"checker-framework.checkerframework_org": "typetools"
+```
+
+### checkerframework_repo
+
+This specifies from which Github repository under `checkerframework_org` to download Checker Framework. The default is `checker-framework`.
+
+Combined with `checkerframework_org`, the default Checker Framework is `typetools/checker-framework`.
+
+Sample setting:
+
+```
+"checker-framework.checkerframework_repo": "checker-framework"
+```
+
+### languageserver_org
+
+This specifies from which Github organization to download the language server. The default is `eisopux`.
+
+Sample setting:
+
+```
+"checker-framework.languageserver_org": "eisopux"
+```
+
+### languageserver_repo
+
+This specifies from which Github repository under `languageserver_org` to download the language server. The default is `checker-framework-languageserver`.
+
+Combined with `languageserver_org`, the default language server is `eisopux/checker-framework-languageserver`.
+
+Sample setting:
+
+```
+"checker-framework.languageserver_repo": "checker-framework-languageserver"
 ```
 
 ## License

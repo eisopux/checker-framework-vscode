@@ -62,6 +62,26 @@
                     },
                     "default": [],
                     "description": "List of command line options that gets passed in to javac. See available options in: https://checkerframework.org/manual/#running"
+                },
+                "checker-framework.checkerframework_org": {
+                    "type": "string",
+                    "default": "typetools",
+                    "description": "From which Github organization to download Checker Framework."
+                },
+                "checker-framework.checkerframework_repo": {
+                    "type": "string",
+                    "default": "checker-framework",
+                    "description": "From which Github repository under checkerframework_org to download Checker Framework."
+                },
+                "checker-framework.languageserver_org": {
+                    "type": "string",
+                    "default": "eisopux",
+                    "description": "From which Github organization to download language server."
+                },
+                "checker-framework.languageserver_repo": {
+                    "type": "string",
+                    "default": "checker-framework-languageserver",
+                    "description": "From which Github repository under checkerframework_org to download language server."
                 }
             }
         }
