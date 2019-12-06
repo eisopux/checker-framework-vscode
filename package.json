@@ -22,7 +22,7 @@
         "vscode-uri": "^1.0.8"
     },
     "devDependencies": {
-        "@types/node": "^12.6.8",
+        "@types/node": "^12.12.14",
         "typescript": "^3.5.3",
         "vscode": "^1.1.33"
     },
