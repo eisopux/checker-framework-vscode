@@ -1,6 +1,6 @@
 {
-    "name": "checkerframework-language-server",
-    "description": "Language server of the Checker Framework",
+    "name": "checker-framework-language-server",
+    "description": "LSP client for the Checker Framework",
     "author": "eisopux",
     "license": "MIT",
     "version": "0.2.0",
