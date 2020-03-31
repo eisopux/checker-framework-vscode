@@ -29,7 +29,7 @@ steps:
 - bash: |
     echo ">>> Compile checker-framework-vscode"
     yarn && yarn compile
-    echo ">>> Compiled checker-framework-vscode"
+    # echo ">>> Compiled checker-framework-vscode"
     #    cd sample
     #    echo ">>> Run sample integration test"
     #    yarn && yarn compile && yarn test
