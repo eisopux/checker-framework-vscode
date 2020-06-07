@@ -107,6 +107,10 @@ Sample setting:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
+## References
+
+* [VS Code publishing extensions](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
+
 ## Acknowledgments
 
 This project is inspired and helped by the following projects:
