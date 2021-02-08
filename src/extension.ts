@@ -8,7 +8,7 @@ import * as path from 'path';
 import * as child from 'child_process';
 
 import * as vscode from 'vscode';
-import * as vscodelc from 'vscode-languageclient';
+import * as vscodelc from 'vscode-languageclient/node';
 
 import * as strings from './strings';
 import * as findjava from './findjava';
