@@ -102,6 +102,13 @@ Sample setting:
 ```
 "checker-framework.languageserver_repo": "checker-framework-languageserver"
 ```
+## Developer's Guide
+
+To install the extension on VSCode:
+1. Install its dependencies (`npm install`) and `npm install -g vsce`.
+2. In the root of the project, run `vsce package`to generate a .vsix file and then do
+`code --install-extension my-extension-0.0.1.vsix`, replacing my-extension-0.0.1.vsix to the .vsix file recently created. 
+Under View -> Extensions on VSCode check if the 'checker-framework-language-server' is installed and if not, search for it and install it. 
 
 ## License
 
