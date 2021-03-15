@@ -104,11 +104,17 @@ Sample setting:
 ```
 ## Developer's Guide
 
-To install the extension on VSCode:
-1. Install its dependencies (`npm install`) and `npm install -g vsce`.
+During development, you can simply start the program from the command line and run as a new instance.
+
+To add from the command line, you can install the extension on VSCode:
+1. Install its dependencies (`yarn install`) and `yarn global add vsce`.
 2. In the root of the project, run `vsce package`to generate a .vsix file and then do
 `code --install-extension my-extension-0.0.1.vsix`, replacing my-extension-0.0.1.vsix to the .vsix file recently created. 
 Under View -> Extensions on VSCode check if the 'checker-framework-language-server' is installed. 
+
+### Deploying to VSCode Marketplace
+A good resource for deploying to marketplace can be found [here](https://www.richardkotze.com/coding/deploy-vscode-extension-azure-pipeline). 
+
 
 ## License
 
