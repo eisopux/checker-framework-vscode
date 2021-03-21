@@ -104,8 +104,11 @@ Sample setting:
 ```
 ## Developer's Guide
 
-During development, you can simply start the program from the command line and run as a new instance.
+During development, you can simply start the program from the command line and run as a new instance:
+1.  Open up this project (checker-framework-vscode) on VSCode and start a new instance by clicking on `Run` in the top bar menu, then `Start Debugging`. 
+2.  Open a new folder with a `.java` (this can be a simple Hello World folder) file in the VSCode with `[Extension Development Host]` instance of VSCode.
 
+The manual method involves the following steps:
 To add from the command line, you can install the extension on VSCode:
 1. Install its dependencies (`yarn install`) and `yarn global add vsce`.
 2. In the root of the project, run `vsce package`to generate a .vsix file and then do
