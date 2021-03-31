@@ -116,8 +116,7 @@ function downloadDeps(callback: Function) {
         if (stderr){
             console.log('stderr:'+ stderr);
         }
-
-        console.log("stdout"+stdout);
+        
         let str=stdout.toString();
         let lines = str.split(/(\r?\n)/g);
             for (let i = 0; i < lines.length; ++i) {
