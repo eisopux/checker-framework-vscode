@@ -18,17 +18,19 @@ export function activate(context: vscode.ExtensionContext) {
     let checkerInstalled = false;
 
     // If specified in conf, use conf, otherwise download & install
-    let languageServerPath = getConfig<string>(strings.Misc.optLanguageServerPath);
-    let frameworkPath = getConfig<string>(strings.Misc.optFrameworkpath);
-    let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
 
-    console.log('Looking for language server at', languageServerPath);
+    //This value is dependent on the version of the jar file, check in your Ubuntu machine
+    let languageServerPath= path.join(__dirname, '..', '/checker-framework-languageserver-downloader-0.2.0.jar');
     if (languageServerPath && fs.existsSync(languageServerPath)) {
         console.log('Using local language server', languageServerPath);
         serverInstalled = true;
     }
-    console.log('Looking for checker framework at', frameworkPath);
-    if (frameworkPath && fs.existsSync(checkerPath)) {
+
+    //This value is dependent on the checker-framework version
+    let frameworkPath=path.join(__dirname, '..', 'download/checker-framework-3.11.0');
+    let checkerPath=path.join(__dirname, '..', 'download/checker-framework-3.11.0/checker/dist/checker.jar');
+   
+    if ( frameworkPath && fs.existsSync(checkerPath)) {
         console.log('Using local checker framework', checkerPath);
         checkerInstalled = true;
     }
@@ -42,12 +44,14 @@ export function activate(context: vscode.ExtensionContext) {
                 await setConfig(strings.Misc.optLanguageServerPath, languageServerPath);
             }
             if (!checkerInstalled) {
-                frameworkPath = cf;
-                checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
+                //This value is dependent on the checker-framework version
+                frameworkPath = path.join(__dirname, '..', 'download/checker-framework-3.11.0');
+                checkerPath = path.join(__dirname, '..', 'download/checker-framework-3.11.0/checker/dist/checker.jar')
                 await setConfig(strings.Misc.optFrameworkpath, frameworkPath);
             }
             vscode.window.showInformationMessage('Finished downloading');
             launchLS();
+            fs.existsSync(checkerPath)
         });
     } else launchLS();
 
@@ -81,9 +85,10 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function downloadDeps(callback: Function) {
+    
     let args = [
         '-jar',
-        path.join(__dirname, '..', '/checker-framework-languageserver-downloader-0.2.0.jar'),
+        path.join(__dirname, '..', 'checker-framework-languageserver-downloader-0.2.0.jar'),
         '-dest',
         path.join(__dirname, '..', 'download'),
         '-' + strings.Misc.optCFOrg,
@@ -95,39 +100,43 @@ function downloadDeps(callback: Function) {
         '-' + strings.Misc.optLSRepo,
         getConfig<string>(strings.Misc.optLSRepo)
     ]
-    console.log('spawnning downloader, args:', args);
-    let prc = child.spawn('java', args);
 
-    let server = '';
-    let framework = '';
-
-    prc.stderr.on('data', function (data) {
-        let str = data.toString()
-        let lines = str.split(/(\r?\n)/g);
-        console.log('stderr:', lines.join(""));
-    });
-
-    prc.stdout.on('data', function (data) {
-        let str = data.toString()
-        let lines = str.split(/(\r?\n)/g);
-        for (let i = 0; i < lines.length; ++i) {
-            let l = lines[i];
-            if (l.startsWith('Got ')) {
-                let p = l.split(' ')[1];
-                if (!server) server = p;
-                else framework = p;
-            }
+    
+    var server = '';
+    var framework = '';
+    let argument="java -jar "+path.join(__dirname, '..', 'checker-framework-languageserver-downloader-0.2.0.jar')+" -dest "+path.join(__dirname, '..', 'download');
+    
+    //exec is used instead of spawn
+    child.exec(argument, (error, stdout, stderr) =>{
+    
+        if (error){
+            console.log('error'+ error);
+            return;
         }
-        console.log(lines.join(""));
-    });
+        if (stderr){
+            console.log('stderr:'+ stderr);
+        }
 
-    prc.on('close', function (code) {
-        console.log('process exit code ' + code);
+        console.log("stdout"+stdout);
+        let str=stdout.toString();
+        let lines = str.split(/(\r?\n)/g);
+            for (let i = 0; i < lines.length; ++i) {
+                let l = lines[i];
+                if (l.startsWith('Got ')) {
+                    let p = l.split(' ')[1];
+                    if (!server) server = p;
+                    else framework = p;
+                }
+            }
+            console.log(lines.join(""));
         callback(server, framework);
-    });
+        });    
 }
 
 function getServerArgs(checkerPath: string, fatjarPath: string) {
+    //This value is dependent on the checker-framework version
+    var checkerPath=path.join(__dirname, '..', '/download/checker-framework-3.11.0/checker/dist/checker.jar');
+    var fatjarPath=path.join(__dirname, '..', '/download/checker-framework-languageserver-0.1.1-java8.jar');
     let classpath = ['.', checkerPath, fatjarPath].join(path.delimiter);
     let mainClass = strings.Misc.serverMainClass;
     let args = [
@@ -135,7 +144,7 @@ function getServerArgs(checkerPath: string, fatjarPath: string) {
         classpath,
         mainClass,
         '-' + strings.Misc.optFrameworkpath,
-        getConfig<string>(strings.Misc.optFrameworkpath)
+        path.join(__dirname, '..', '/download/checker-framework-3.11.0')
     ];
     getConfig<Array<string>>(strings.Misc.optCheckers).forEach(c => {
         args.push('-' + strings.Misc.optCheckers);
