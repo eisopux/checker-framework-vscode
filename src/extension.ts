@@ -18,19 +18,17 @@ export function activate(context: vscode.ExtensionContext) {
     let checkerInstalled = false;
 
     // If specified in conf, use conf, otherwise download & install
-
-    //This value is dependent on the version of the jar file, check in your Ubuntu machine
-    let languageServerPath= path.join(__dirname, '..', '/checker-framework-languageserver-downloader-0.2.0.jar');
+    let languageServerPath = getConfig<string>(strings.Misc.optLanguageServerPath);
+    let frameworkPath = getConfig<string>(strings.Misc.optFrameworkpath);
+    let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
+    
+    console.log('Looking for language server at',languageServerPath);
     if (languageServerPath && fs.existsSync(languageServerPath)) {
         console.log('Using local language server', languageServerPath);
         serverInstalled = true;
     }
-
-    //This value is dependent on the checker-framework version
-    let frameworkPath=path.join(__dirname, '..', 'download/checker-framework-3.11.0');
-    let checkerPath=path.join(__dirname, '..', 'download/checker-framework-3.11.0/checker/dist/checker.jar');
-   
-    if ( frameworkPath && fs.existsSync(checkerPath)) {
+    console.log('Looking for checker framework at', frameworkPath);
+    if (frameworkPath && fs.existsSync(checkerPath)) {
         console.log('Using local checker framework', checkerPath);
         checkerInstalled = true;
     }
@@ -44,14 +42,12 @@ export function activate(context: vscode.ExtensionContext) {
                 await setConfig(strings.Misc.optLanguageServerPath, languageServerPath);
             }
             if (!checkerInstalled) {
-                //This value is dependent on the checker-framework version
-                frameworkPath = path.join(__dirname, '..', 'download/checker-framework-3.11.0');
-                checkerPath = path.join(__dirname, '..', 'download/checker-framework-3.11.0/checker/dist/checker.jar')
+                frameworkPath = cf;
+                checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
                 await setConfig(strings.Misc.optFrameworkpath, frameworkPath);
             }
             vscode.window.showInformationMessage('Finished downloading');
             launchLS();
-            fs.existsSync(checkerPath)
         });
     } else launchLS();
 
@@ -85,10 +81,9 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function downloadDeps(callback: Function) {
-    
     let args = [
         '-jar',
-        path.join(__dirname, '..', 'checker-framework-languageserver-downloader-0.2.0.jar'),
+        path.join(__dirname, '..', '/checker-framework-languageserver-downloader-0.2.0.jar'),
         '-dest',
         path.join(__dirname, '..', 'download'),
         '-' + strings.Misc.optCFOrg,
@@ -100,8 +95,7 @@ function downloadDeps(callback: Function) {
         '-' + strings.Misc.optLSRepo,
         getConfig<string>(strings.Misc.optLSRepo)
     ]
-
-    
+    console.log('spawnning downloader, args:', args);
     var server = '';
     var framework = '';
     let argument="java -jar "+path.join(__dirname, '..', 'checker-framework-languageserver-downloader-0.2.0.jar')+" -dest "+path.join(__dirname, '..', 'download');
@@ -128,13 +122,11 @@ function downloadDeps(callback: Function) {
                 }
             }
             console.log(lines.join(""));
-        callback(server, framework);
-        });    
+            callback(server, framework);
+    });    
 }
 
 function getServerArgs(checkerPath: string, fatjarPath: string) {
-    //This value is dependent on the checker-framework version
-    var checkerPath=path.join(__dirname, '..', '/download/checker-framework-3.11.0/checker/dist/checker.jar');
     var fatjarPath=path.join(__dirname, '..', '/download/checker-framework-languageserver-0.1.1-java8.jar');
     let classpath = ['.', checkerPath, fatjarPath].join(path.delimiter);
     let mainClass = strings.Misc.serverMainClass;
@@ -143,7 +135,7 @@ function getServerArgs(checkerPath: string, fatjarPath: string) {
         classpath,
         mainClass,
         '-' + strings.Misc.optFrameworkpath,
-        path.join(__dirname, '..', '/download/checker-framework-3.11.0')
+        getConfig<string>(strings.Misc.optFrameworkpath)
     ];
     getConfig<Array<string>>(strings.Misc.optCheckers).forEach(c => {
         args.push('-' + strings.Misc.optCheckers);
@@ -163,3 +155,4 @@ function getConfig<T>(name: string): T {
 function setConfig<T>(name: string, value: any): Thenable<void> {
     return vscode.workspace.getConfiguration(strings.Misc.pluginID).update(name, value);
 }
+
