@@ -16,13 +16,12 @@ import * as findjava from './findjava';
 export function activate(context: vscode.ExtensionContext) {
     let serverInstalled = false;
     let checkerInstalled = false;
-
+ 
     // If specified in conf, use conf, otherwise download & install
     let languageServerPath = getConfig<string>(strings.Misc.optLanguageServerPath);
     let frameworkPath = getConfig<string>(strings.Misc.optFrameworkpath);
     let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
-    
-    console.log('Looking for language server at',languageServerPath);
+   
     if (languageServerPath && fs.existsSync(languageServerPath)) {
         console.log('Using local language server', languageServerPath);
         serverInstalled = true;
@@ -81,21 +80,6 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function downloadDeps(callback: Function) {
-    let args = [
-        '-jar',
-        path.join(__dirname, '..', '/checker-framework-languageserver-downloader-0.2.0.jar'),
-        '-dest',
-        path.join(__dirname, '..', 'download'),
-        '-' + strings.Misc.optCFOrg,
-        getConfig<string>(strings.Misc.optCFOrg),
-        '-' + strings.Misc.optCFRepo,
-        getConfig<string>(strings.Misc.optCFRepo),
-        '-' + strings.Misc.optLSOrg,
-        getConfig<string>(strings.Misc.optLSOrg),
-        '-' + strings.Misc.optLSRepo,
-        getConfig<string>(strings.Misc.optLSRepo)
-    ]
-    console.log('spawnning downloader, args:', args);
     var server = '';
     var framework = '';
     let argument="java -jar "+path.join(__dirname, '..', 'checker-framework-languageserver-downloader-0.2.0.jar')+" -dest "+path.join(__dirname, '..', 'download');
@@ -127,7 +111,6 @@ function downloadDeps(callback: Function) {
 }
 
 function getServerArgs(checkerPath: string, fatjarPath: string) {
-    var fatjarPath=path.join(__dirname, '..', '/download/checker-framework-languageserver-0.1.1-java8.jar');
     let classpath = ['.', checkerPath, fatjarPath].join(path.delimiter);
     let mainClass = strings.Misc.serverMainClass;
     let args = [
