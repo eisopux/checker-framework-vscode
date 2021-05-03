@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
     let languageServerPath = getConfig<string>(strings.Misc.optLanguageServerPath);
     let frameworkPath = getConfig<string>(strings.Misc.optFrameworkpath);
     let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
-   
+    
     if (languageServerPath && fs.existsSync(languageServerPath)) {
         console.log('Using local language server', languageServerPath);
         serverInstalled = true;
@@ -138,3 +138,4 @@ function getConfig<T>(name: string): T {
 function setConfig<T>(name: string, value: any): Thenable<void> {
     return vscode.workspace.getConfiguration(strings.Misc.pluginID).update(name, value);
 }
+
