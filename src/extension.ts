@@ -22,6 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
     let frameworkPath = getConfig<string>(strings.Misc.optFrameworkpath);
     let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
     
+    console.log('Looking for language server at', languageServerPath);
     if (languageServerPath && fs.existsSync(languageServerPath)) {
         console.log('Using local language server', languageServerPath);
         serverInstalled = true;
@@ -98,16 +99,16 @@ function downloadDeps(callback: Function) {
         let str=stdout.toString();
         let lines = str.split(/(\r?\n)/g);
         for (let i = 0; i < lines.length; ++i) {
-             let l = lines[i];
-             if (l.startsWith('Got ')) {
-                  let p = l.split(' ')[1];
-                  if (!server) server = p;
-                  else framework = p;
-             }
+            let l = lines[i];
+            if (l.startsWith('Got ')) {
+                let p = l.split(' ')[1];
+                if (!server) server = p;
+                else framework = p;
+            }
         }
         console.log(lines.join(""));
         callback(server, framework);
-    });    
+    });
 }
 
 function getServerArgs(checkerPath: string, fatjarPath: string) {
@@ -138,4 +139,3 @@ function getConfig<T>(name: string): T {
 function setConfig<T>(name: string, value: any): Thenable<void> {
     return vscode.workspace.getConfiguration(strings.Misc.pluginID).update(name, value);
 }
-
