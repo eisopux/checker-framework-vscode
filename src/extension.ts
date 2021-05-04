@@ -16,7 +16,7 @@ import * as findjava from './findjava';
 export function activate(context: vscode.ExtensionContext) {
     let serverInstalled = false;
     let checkerInstalled = false;
- 
+
     // If specified in conf, use conf, otherwise download & install
     let languageServerPath = getConfig<string>(strings.Misc.optLanguageServerPath);
     let frameworkPath = getConfig<string>(strings.Misc.optFrameworkpath);
@@ -97,16 +97,16 @@ function downloadDeps(callback: Function) {
         
         let str=stdout.toString();
         let lines = str.split(/(\r?\n)/g);
-            for (let i = 0; i < lines.length; ++i) {
-                let l = lines[i];
-                if (l.startsWith('Got ')) {
-                    let p = l.split(' ')[1];
-                    if (!server) server = p;
-                    else framework = p;
-                }
-            }
-            console.log(lines.join(""));
-            callback(server, framework);
+        for (let i = 0; i < lines.length; ++i) {
+             let l = lines[i];
+             if (l.startsWith('Got ')) {
+                  let p = l.split(' ')[1];
+                  if (!server) server = p;
+                  else framework = p;
+             }
+        }
+        console.log(lines.join(""));
+        callback(server, framework);
     });    
 }
 
