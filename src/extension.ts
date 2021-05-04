@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
     let languageServerPath = getConfig<string>(strings.Misc.optLanguageServerPath);
     let frameworkPath = getConfig<string>(strings.Misc.optFrameworkpath);
     let checkerPath = path.join(frameworkPath, strings.Misc.checkerRelPath);
-    
+
     console.log('Looking for language server at', languageServerPath);
     if (languageServerPath && fs.existsSync(languageServerPath)) {
         console.log('Using local language server', languageServerPath);
