@@ -110,9 +110,8 @@ During development, you can simply start the program from the command line and r
 
 The manual method involves the following steps:
 To add from the command line, you can install the extension on VSCode:
-1. Install its dependencies (`yarn install`) and `yarn global add vsce`.
-2. In the root of the project, run `vsce package`to generate a .vsix file and then do
-`code --install-extension my-extension-0.0.1.vsix`, replacing my-extension-0.0.1.vsix to the .vsix file recently created. 
+1. Install its dependencies: `yarn install`
+2. Run the following script `yarn global add vsce`
 Under View -> Extensions on VSCode check if the 'checker-framework-language-server' is installed. 
 
 ### Deploying to VSCode Marketplace
