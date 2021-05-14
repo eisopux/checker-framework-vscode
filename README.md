@@ -102,16 +102,24 @@ Sample setting:
 ```
 "checker-framework.languageserver_repo": "checker-framework-languageserver"
 ```
+
+## Requirements 
+Node.js and yarn is required.
+
 ## Developer's Guide
 
 During development, you can simply start the program from the command line and run as a new instance:
-1.  Open up this project (checker-framework-vscode) on VSCode and start a new instance by clicking on `Run` in the top bar menu, then `Start Debugging`. 
-2.  Open a new folder with a `.java` (this can be a simple Hello World folder) file in the VSCode with `[Extension Development Host]` instance of VSCode.
+1.  Install dependencies using `yarn install`
+2.  Open up this project (checker-framework-vscode) on VSCode and start a new instance by clicking on `Run` in the top bar menu, then `Start Debugging`. 
+3.  Open a new folder with a `.java` (this can be a simple Hello World folder) file in the VSCode with `[Extension Development Host]` instance of VSCode.
 
 The manual method involves the following steps:
 To add from the command line, you can install the extension on VSCode:
-1. Install its dependencies: `yarn install`
+1. Install dependencies using `yarn install`
 2. Run the following script `yarn global add vsce`
+3. In the root of the project, run `vsce package`to generate a .vsix file 
+4. Run `code --install-extension my-extension-0.0.1.vsix`, replacing my-extension-0.0.1.vsix to the .vsix file recently created. 
+
 Under View -> Extensions on VSCode check if the 'checker-framework-language-server' is installed. 
 
 ### Deploying to VSCode Marketplace
