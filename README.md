@@ -4,7 +4,7 @@ This project is an extension for VS Code providing the features of [Checker Fram
 
 ## Getting Started
 
-After installing this extension, open or save any `.java` file and it will be checked by Checker Framework using the [Nullness Checker](https://checkerframework.org/manual/#nullness-checker).
+After installing this extension, open a folder/workspace and open or save any `.java` file and it will be checked by Checker Framework using the [Nullness Checker](https://checkerframework.org/manual/#nullness-checker).
 
 The first time the extension gets running, dependencies will be downloaded: the latest version of Checker Framework([typetools/checker-framework](https://github.com/typetools/checker-framework)), and a [language server](https://github.com/eisopux/checker-framework-languageserver) wrapping around the Checker Framework.
 
