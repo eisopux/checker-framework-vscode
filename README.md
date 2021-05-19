@@ -104,7 +104,7 @@ Sample setting:
 ```
 
 ## Requirements 
-Node.js and yarn is required.
+Node.js and yarn are required.
 
 ## Developer's Guide
 
