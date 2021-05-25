@@ -1,0 +1,11 @@
+out
+node_modules
+download
+.vscode
+yarn.lock
+.prettierrc.json
+.github
+azure-pipelines.yml
+package-lock.json
+package.json
+README.md

@@ -23,6 +23,9 @@
     },
     "devDependencies": {
         "@types/node": "^15.0.2",
+        "husky": "^6.0.0",
+        "lint-staged": "^11.0.0",
+        "prettier": "2.3.0",
         "typescript": "^4.0.2",
         "vscode": "^1.1.37"
     },
@@ -91,5 +94,8 @@
         "compile": "tsc -p ./",
         "update-vscode": "node ./node_modules/vscode/bin/install",
         "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
     }
 }
