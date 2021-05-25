@@ -112,10 +112,20 @@ function downloadDeps(callback: Function) {
         let lines = str.split(/(\r?\n)/g);
         for (let i = 0; i < lines.length; ++i) {
             let l = lines[i];
-            if (l.startsWith('Got ')) {
-                let p = l.split(' ')[1];
-                if (!server) server = p;
-                else framework = p;
+            const serverPrefix = "Got language server: ";
+            const frameworkPrefix = "Got Checker Framework: ";
+            if (l.startsWith(serverPrefix)) {
+                const p = l.substring(serverPrefix.length);
+                if (!server) {    
+                    server = p;
+                }
+                else if(server != p){
+                    console.log(`Current server: ${server} does not match provided server: ${p}`);
+                    server = p;
+                }
+            }
+            else if(l.substring(frameworkPrefix.length)) {
+                framework = l.substring(frameworkPrefix.length);
             }
         }
         console.log(lines.join(""));
