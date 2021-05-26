@@ -16,7 +16,7 @@ and the [Checker Framework Language Server](https://github.com/eisopux/checker-f
 
 ### Prerequisites
 
-A JDK is required, i.e. `JAVA_HOME` needs to be properly set. JDK versions 8, 9, and 11 are supported.
+A JDK is required, i.e. `JAVA_HOME` needs to be properly set. JDK versions 8, 9, and 11 are supported. Node.js and yarn are also required.
 
 ### Configuration
 
@@ -118,20 +118,9 @@ Sample setting:
 "checker-framework.languageserver_repo": "checker-framework-languageserver"
 ```
 
-## Requirements 
-
-Node.js and yarn are required.
-
 ## Developer's Guide
 
-During development, you can simply start the program from the command line and run as a new VS Code instance:
-
-1.  Install dependencies using `yarn install`.
-2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`
-    in the menu bar, then `Start Debugging`. 
-4.  Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
-
-The manual method involves the following steps:
+When setting up the extension perform the following steps:
 
 To add from the command line, you can install the extension on VSCode:
 1. Install dependencies using `yarn install`.
@@ -140,6 +129,13 @@ To add from the command line, you can install the extension on VSCode:
 4. Run `code --install-extension my-extension-0.0.1.vsix`, replacing `my-extension-0.0.1.vsix` with the created `.vsix` file. 
 
 Under `View -> Extensions` in VS Code check if the 'checker-framework-language-server' is installed. 
+
+During development, you can simply start the program from the command line and run as a new VS Code instance:
+
+1.  Install dependencies using `yarn install`.
+2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`
+    in the menu bar, then `Start Debugging`. 
+4.  Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
 
 
 ## License
