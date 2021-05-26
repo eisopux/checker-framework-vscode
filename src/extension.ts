@@ -115,14 +115,8 @@ function downloadDeps(callback: Function) {
             const serverPrefix = "Got language server: ";
             const frameworkPrefix = "Got Checker Framework: ";
             if (l.startsWith(serverPrefix)) {
-                const p = l.substring(serverPrefix.length);
-                if (!server) {    
-                    server = p;
-                }
-                else if(server != p){
-                    console.log(`Current server: ${server} does not match provided server: ${p}`);
-                    server = p;
-                }
+                server = l.substring(serverPrefix.length);
+
             }
             else if(l.substring(frameworkPrefix.length)) {
                 framework = l.substring(frameworkPrefix.length);
