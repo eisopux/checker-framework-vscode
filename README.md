@@ -120,18 +120,15 @@ Sample setting:
 
 ## Developer's Guide
 
-When setting up the extension perform the following steps:
-
-To add from the command line, you can install the extension on VSCode:
+To set up and build from the command line, perform the following steps:
 1. Install dependencies using `yarn install`.
 2. Run `yarn global add vsce`.
 3. In the root of the project, run `vsce package` to generate a `.vsix` file 
 4. Run `code --install-extension my-extension-0.0.1.vsix`, replacing `my-extension-0.0.1.vsix` with the created `.vsix` file. 
 
-Under `View -> Extensions` in VS Code check if the 'checker-framework-language-server' is installed. 
+Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
 
 During development, you can simply start the program from the command line and run as a new VS Code instance:
-
 1.  Install dependencies using `yarn install`.
 2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`
     in the menu bar, then `Start Debugging`. 
