@@ -1,95 +1,101 @@
 {
-    "name": "checker-framework-language-server",
-    "description": "LSP client for the Checker Framework",
-    "author": "eisopux",
-    "license": "MIT",
-    "version": "0.2.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/eisopux/checker-framework-vscode.git"
-    },
-    "publisher": "zhangjiangqige",
-    "categories": [
-        "Linters"
-    ],
-    "engines": {
-        "vscode": "^1.52.0"
-    },
-    "dependencies": {
-        "decompress-zip": "^0.3.2",
-        "follow-redirects": "^1.11.0",
-        "vscode-languageclient": "^7.0.0",
-        "vscode-uri": "^3.0.2"
-    },
-    "devDependencies": {
-        "@types/node": "^15.0.2",
-        "typescript": "^4.0.2",
-        "vscode": "^1.1.37"
-    },
-    "activationEvents": [
-        "onLanguage:java"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "configuration": {
-            "type": "object",
-            "title": "Checker Framework configuration",
-            "properties": {
-                "checker-framework.checkers": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "default": [
-                        "org.checkerframework.checker.nullness.NullnessChecker"
-                    ],
-                    "description": "List of checkers enabled for compilation. More details in: https://checkerframework.org/manual/#running"
-                },
-                "checker-framework.frameworkPath": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Absolute path of the Checker Framework."
-                },
-                "checker-framework.languageServerPath": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Absolute path to the fat jar of the Checker Framework language server."
-                },
-                "checker-framework.commandLineOptions": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "default": [],
-                    "description": "List of command line options that gets passed in to javac. See available options in: https://checkerframework.org/manual/#running"
-                },
-                "checker-framework.checkerframework_org": {
-                    "type": "string",
-                    "default": "typetools",
-                    "description": "From which Github organization to download Checker Framework."
-                },
-                "checker-framework.checkerframework_repo": {
-                    "type": "string",
-                    "default": "checker-framework",
-                    "description": "From which Github repository under checkerframework_org to download Checker Framework."
-                },
-                "checker-framework.languageserver_org": {
-                    "type": "string",
-                    "default": "eisopux",
-                    "description": "From which Github organization to download language server."
-                },
-                "checker-framework.languageserver_repo": {
-                    "type": "string",
-                    "default": "checker-framework-languageserver",
-                    "description": "From which Github repository under checkerframework_org to download language server."
-                }
-            }
+  "name": "checker-framework-language-server",
+  "description": "LSP client for the Checker Framework",
+  "author": "eisopux",
+  "license": "MIT",
+  "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eisopux/checker-framework-vscode.git"
+  },
+  "publisher": "zhangjiangqige",
+  "categories": [
+    "Linters"
+  ],
+  "engines": {
+    "vscode": "^1.52.0"
+  },
+  "dependencies": {
+    "decompress-zip": "^0.3.2",
+    "follow-redirects": "^1.11.0",
+    "vscode-languageclient": "^7.0.0",
+    "vscode-uri": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.2",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "2.3.2",
+    "typescript": "^4.0.2",
+    "vscode": "^1.1.37"
+  },
+  "activationEvents": [
+    "onLanguage:java"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Checker Framework configuration",
+      "properties": {
+        "checker-framework.checkers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "org.checkerframework.checker.nullness.NullnessChecker"
+          ],
+          "description": "List of checkers enabled for compilation. More details in: https://checkerframework.org/manual/#running"
+        },
+        "checker-framework.frameworkPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path of the Checker Framework."
+        },
+        "checker-framework.languageServerPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the fat jar of the Checker Framework language server."
+        },
+        "checker-framework.commandLineOptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "List of command line options that gets passed in to javac. See available options in: https://checkerframework.org/manual/#running"
+        },
+        "checker-framework.checkerframework_org": {
+          "type": "string",
+          "default": "typetools",
+          "description": "From which Github organization to download Checker Framework."
+        },
+        "checker-framework.checkerframework_repo": {
+          "type": "string",
+          "default": "checker-framework",
+          "description": "From which Github repository under checkerframework_org to download Checker Framework."
+        },
+        "checker-framework.languageserver_org": {
+          "type": "string",
+          "default": "eisopux",
+          "description": "From which Github organization to download language server."
+        },
+        "checker-framework.languageserver_repo": {
+          "type": "string",
+          "default": "checker-framework-languageserver",
+          "description": "From which Github repository under checkerframework_org to download language server."
         }
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "update-vscode": "node ./node_modules/vscode/bin/install",
-        "postinstall": "node ./node_modules/vscode/bin/install"
+      }
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "update-vscode": "node ./node_modules/vscode/bin/install",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown src/*.js"
+  }
 }
