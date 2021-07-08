@@ -3,6 +3,7 @@
 This project is an extension for VS Code to provide the features of the [Checker Framework](https://checkerframework.org/),
 via the [Checker Framework Language Server](https://github.com/eisopux/checker-framework-languageserver).
 
+
 ## Getting Started
 
 After installing this extension, when you open or save any `.java` file it will be checked
@@ -50,7 +51,7 @@ Sample setting:
 #### `frameworkPath`
 
 The path to the root folder of the Checker Framework to use.
-The directory should follow the layout of an unzipped Checker Framework release zip file.
+The directory should follow the layout of an unzipped Checker Framework release zip file. 
 By default, this extension will set this up for you.
 
 Sample setting:
@@ -120,20 +121,19 @@ Sample setting:
 ## Developer's Guide
 
 To set up and build from the command line, perform the following steps:
-
 1. Install dependencies using `yarn install`.
 2. Run `yarn global add vsce`.
-3. In the root of the project, run `vsce package` to generate a `.vsix` file
-4. Run `code --install-extension my-extension-0.0.1.vsix`, replacing `my-extension-0.0.1.vsix` with the created `.vsix` file.
+3. In the root of the project, run `vsce package` to generate a `.vsix` file 
+4. Run `code --install-extension my-extension-0.0.1.vsix`, replacing `my-extension-0.0.1.vsix` with the created `.vsix` file. 
 
-Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed.
+Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
 
 During development, you can simply start the program from the command line and run as a new VS Code instance:
-
 1.  Install dependencies using `yarn install`.
 2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`
-    in the menu bar, then `Start Debugging`.
-3.  Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
+    in the menu bar, then `Start Debugging`. 
+4.  Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
+
 
 ## License
 
@@ -141,14 +141,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## References
 
-- [VS Code publishing extensions](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
-- [Guide to deploying to the VS Code marketplace](https://www.richardkotze.com/coding/deploy-vscode-extension-azure-pipeline).
+* [VS Code publishing extensions](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
+* [Guide to deploying to the VS Code marketplace](https://www.richardkotze.com/coding/deploy-vscode-extension-azure-pipeline). 
 
 ## Acknowledgments
 
 This project is inspired and helped by the following projects:
 
-- [adamyy/checkerframework-lsp](https://github.com/adamyy/checkerframework-lsp)
-- [georgewfraser/vscode-javac](https://github.com/georgewfraser/vscode-javac)
-- [adamvoss/vscode-languageserver-java-example](https://github.com/adamvoss/vscode-languageserver-java-example)
-- [DafnyVSCode/Dafny-VSCode](https://github.com/DafnyVSCode/Dafny-VSCode)
+* [adamyy/checkerframework-lsp](https://github.com/adamyy/checkerframework-lsp)
+* [georgewfraser/vscode-javac](https://github.com/georgewfraser/vscode-javac)
+* [adamvoss/vscode-languageserver-java-example](https://github.com/adamvoss/vscode-languageserver-java-example)
+* [DafnyVSCode/Dafny-VSCode](https://github.com/DafnyVSCode/Dafny-VSCode)
