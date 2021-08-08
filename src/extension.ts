@@ -132,8 +132,10 @@ function downloadDeps(callback: Function) {
       const frameworkPrefix = "Got Checker Framework: ";
       if (l.startsWith(serverPrefix)) {
         server = l.substring(serverPrefix.length);
-      } else if (l.substring(frameworkPrefix.length)) {
+      } else if (l.startsWith(frameworkPrefix)) {
         framework = l.substring(frameworkPrefix.length);
+      } else {
+        // TODO raise an error for unexpected responses
       }
     }
     console.log(lines.join(""));
