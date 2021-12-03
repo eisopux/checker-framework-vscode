@@ -128,6 +128,7 @@ function downloadDeps(callback: Function) {
     let lines = str.split(/(\r?\n)/g);
     for (let i = 0; i < lines.length; ++i) {
       let l = lines[i];
+      // See https://github.com/eisopux/checker-framework-languageserver-downloader/blob/master/src/main/java/org/checkerframework/languageserver/DownloaderMain.java#L50
       const serverPrefix = "Got language server: ";
       const frameworkPrefix = "Got Checker Framework: ";
       if (l.startsWith(serverPrefix)) {
