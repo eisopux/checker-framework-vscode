@@ -135,7 +135,7 @@ function downloadDeps(callback: Function) {
       } else if (l.startsWith(frameworkPrefix)) {
         framework = l.substring(frameworkPrefix.length);
       } else {
-        // TODO raise an error for unexpected responses
+        // TODO handle other progress/error responses
       }
     }
     console.log(lines.join(""));
