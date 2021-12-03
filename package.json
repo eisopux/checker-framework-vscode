@@ -13,7 +13,7 @@
     "Linters"
   ],
   "engines": {
-    "vscode": "^1.52.0"
+    "vscode": "^1.62.3"
   },
   "dependencies": {
     "decompress-zip": "^0.3.2",
@@ -22,12 +22,12 @@
     "vscode-uri": "^3.0.2"
   },
   "devDependencies": {
-    "@types/node": "^16.0.1",
+    "@types/node": "^16.11.11",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.0",
     "prettier": "2.5.0",
     "typescript": "^4.0.2",
-    "vscode": "^1.1.37"
+    "@types/vscode": "^1.62.3"
   },
   "activationEvents": [
     "onLanguage:java"
