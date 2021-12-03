@@ -128,10 +128,15 @@ function downloadDeps(callback: Function) {
     let lines = str.split(/(\r?\n)/g);
     for (let i = 0; i < lines.length; ++i) {
       let l = lines[i];
-      if (l.startsWith("Got ")) {
-        let p = l.split(" ")[1];
-        if (!server) server = p;
-        else framework = p;
+      // See https://github.com/eisopux/checker-framework-languageserver-downloader/blob/master/src/main/java/org/checkerframework/languageserver/DownloaderMain.java#L50
+      const serverPrefix = "Got language server: ";
+      const frameworkPrefix = "Got Checker Framework: ";
+      if (l.startsWith(serverPrefix)) {
+        server = l.substring(serverPrefix.length);
+      } else if (l.startsWith(frameworkPrefix)) {
+        framework = l.substring(frameworkPrefix.length);
+      } else {
+        // TODO handle other progress/error responses
       }
     }
     console.log(lines.join(""));
