@@ -92,7 +92,7 @@
   "scripts": {
     "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "watch": "tsc -watch -p ./"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown src/*.js"
