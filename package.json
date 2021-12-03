@@ -26,7 +26,7 @@
     "husky": "^7.0.1",
     "lint-staged": "^11.0.0",
     "prettier": "2.5.0",
-    "typescript": "^4.0.2",
+    "typescript": "^4.5.2",
     "@types/vscode": "^1.62.0"
   },
   "activationEvents": [
@@ -90,10 +90,9 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
-    "update-vscode": "node ./node_modules/vscode/bin/install",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "watch": "tsc -watch -p ./",
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown src/*.js"
