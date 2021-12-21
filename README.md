@@ -1,5 +1,4 @@
 # Checker Framework for VS Code
-Testline 1
 
 This project is an extension for VS Code to provide the features of the [Checker Framework](https://checkerframework.org/),
 via the [Checker Framework Language Server](https://github.com/eisopux/checker-framework-languageserver).
