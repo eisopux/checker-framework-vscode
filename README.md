@@ -6,7 +6,8 @@ via the [Checker Framework Language Server](https://github.com/eisopux/checker-f
 
 ## Getting Started
 
-After installing this extension, when you open or save any `.java` file it will be checked
+Please refer to the "Developer's Guide" before getting started.
+After installing the extensions, when you open or save any `.java` file it will be checked
 by the Checker Framework [Nullness Checker](https://checkerframework.org/manual/#nullness-checker).
 Other type systems and options can be enabled in the configuration.
 
@@ -121,10 +122,16 @@ Sample setting:
 ## Developer's Guide
 
 To set up and build from the command line, perform the following steps:
-1. Install dependencies using `yarn install`.
-2. Run `yarn global add vsce`.
-3. In the root of the project, run `vsce package` to generate a `.vsix` file 
-4. Run `code --install-extension my-extension-0.0.1.vsix`, replacing `my-extension-0.0.1.vsix` with the created `.vsix` file. 
+1. Go to Node.Js (https://nodejs.org/en/) and install the newest Node.js program specific to your operating system (OS).
+2. Go to Git (https://git-scm.com/downloads) and install Git program specific to your OS.
+3. Install dependencies using `yarn install`.
+4. Open command promt (run as admisterator) and `corepack enable`.
+5. Open command promt (run as user) initiate `git` and make a new directory `mkdir`.
+6. Change directory to the new directory `cd`.
+7. In the new directory `git clone` web url specific to your branch.
+8. Run `yarn global add vsce`.
+9. In the root of the project, run `vsce package` to generate a `.vsix` file 
+10. Run `code --install-extension my-extension-0.0.1.vsix`, replacing `my-extension-0.0.1.vsix` with the created `.vsix` file. 
 
 Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
 
