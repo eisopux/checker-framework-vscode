@@ -118,6 +118,16 @@ Sample setting:
 "checker-framework.languageserver_repo": "checker-framework-languageserver"
 ```
 
+
+## LSP-related Command Line Options
+This section provides a list of the Checker Framework command line options that are related to the features of this LSP 
+plugin. You can turn on/off an option by adding/removing the corresponding flag in 
+[`commandLineOptions`](#commandlineoptions).
+
+- `-AlspTypeInfo`: Once enabled, the plugin will display a pop-up showing the related type information when hovering on 
+some meaningful syntax in the source file.
+
+
 ## Developer's Guide
 
 To set up and build from the command line, perform the following steps:
