@@ -119,7 +119,8 @@ Sample setting:
 ```
 
 
-## LSP-related Command Line Options
+### LSP-related Command Line Options
+
 This section provides a list of the Checker Framework command line options that are related to the features of this LSP 
 plugin. You can turn on/off an option by adding/removing the corresponding flag in 
 [`commandLineOptions`](#commandlineoptions).
