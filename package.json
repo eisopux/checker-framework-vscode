@@ -63,8 +63,8 @@
           "items": {
             "type": "string"
           },
-          "default": [],
-          "description": "List of command line options that gets passed in to javac. See available options in: https://checkerframework.org/manual/#running"
+          "default": ["-AlspTypeInfo"],
+          "description": "List of command line options that gets passed in to javac. See available options in: https://github.com/eisopux/checker-framework-vscode#commandlineoptions"
         },
         "checker-framework.checkerframework_org": {
           "type": "string",
