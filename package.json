@@ -68,7 +68,7 @@
         },
         "checker-framework.checkerframework_org": {
           "type": "string",
-          "default": "typetools",
+          "default": "eisop",
           "description": "From which Github organization to download Checker Framework."
         },
         "checker-framework.checkerframework_repo": {
