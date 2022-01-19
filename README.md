@@ -38,7 +38,9 @@ The list of all checkers can be found in the [Checker Framework manual](https://
 #### `commandLineOptions`
 
 The list of command-line options that are passed to the Checker Framework. This can include options to javac.
-See the list of all [Checker Framework options](https://checkerframework.org/manual/#checker-options).
+See the list of standard [Checker Framework options](https://checkerframework.org/manual/#checker-options). In 
+addition, a list of options that can change the behaviors of this plugin is included in 
+[LSP-related Command-Line Options](#lsp-related-command-line-options).
 
 Sample setting:
 
@@ -117,6 +119,17 @@ Sample setting:
 ```
 "checker-framework.languageserver_repo": "checker-framework-languageserver"
 ```
+
+
+## LSP-related Command-Line Options
+
+This section provides a list of the Checker Framework command-line options that are related to the features of this LSP 
+plugin. You can turn on/off an option by adding/removing the corresponding flag in 
+[`commandLineOptions`](#commandlineoptions).
+
+- `-AlspTypeInfo`: Once enabled, the plugin will display a pop-up showing the related type information when hovering on 
+some meaningful syntax in the source file. This option is enabled by default.
+
 
 ## Developer's Guide
 
