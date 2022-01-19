@@ -11,7 +11,7 @@ by the Checker Framework [Nullness Checker](https://checkerframework.org/manual/
 Other type systems and options can be enabled in the configuration.
 
 The first time the extension is run, two dependencies will be downloaded: the latest version of the
-Checker Framework ([typetools/checker-framework](https://github.com/typetools/checker-framework))
+Checker Framework ([eisop/checker-framework](https://github.com/eisop/checker-framework))
 and the [Checker Framework Language Server](https://github.com/eisopux/checker-framework-languageserver).
 
 ### Prerequisites
