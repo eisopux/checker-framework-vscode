@@ -40,7 +40,7 @@ The list of all checkers can be found in the [Checker Framework manual](https://
 The list of command-line options that are passed to the Checker Framework. This can include options to javac.
 See the list of standard [Checker Framework options](https://checkerframework.org/manual/#checker-options). In 
 addition, a list of options that can change the behaviors of this plugin is included in 
-[LSP-related Command Line Options](#lsp-related-command-line-options).
+[LSP-related Command-Line Options](#lsp-related-command-line-options).
 
 Sample setting:
 
