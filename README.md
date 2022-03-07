@@ -137,7 +137,7 @@ some meaningful syntax in the source file. This option is enabled by default.
 To set up and build from the command line, perform the following steps:
 1. Go to Node.Js (https://nodejs.org/en/) and install the newest Node.js program specific to your operating system (OS).
 2. Go to Git (https://git-scm.com/downloads) and install a Git program specific to your OS.
-3. Open command prompt(CMD) (run as administrator)Install dependencies using `yarn install`.
+3. Open command prompt (CMD) (admin) Install dependencies using `yarn install`.
 4. In CMD (admin) `corepack enable`.
 5. CMD (user) create a working directory and change into it.
 7. In the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git` (adapt to the web URL specific to your branch). 
