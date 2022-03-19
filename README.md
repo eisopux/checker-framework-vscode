@@ -139,7 +139,7 @@ To set up and build from the command line, perform the following steps:
 2. Go to Git (https://git-scm.com/downloads) and install a Git program specific to your OS.
 3. Open command prompt (CMD) (admin) Install dependencies using `yarn install`.
 4. In CMD (admin) `corepack enable`.
-5. CMD (user) create a working directory and change into it.
+5. CMD (user) create a working directory `mkdir` and change into it `cd`.
 7. In the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git` (adapt to the web URL specific to your branch). 
 8. Change into `cd` `checker-framework-vscode` Run `yarn global add vsce`.
 9. In the same directory, run `vsce package` to generate a `.vsix` file 
