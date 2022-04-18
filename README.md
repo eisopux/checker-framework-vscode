@@ -141,12 +141,15 @@ some meaningful syntax in the source file. This option is enabled by default.
 To set up your development environment, perform the following steps:
 1. Install the newest Node.js version for your operating system (OS); see the [Node.Js homepage](https://nodejs.org/en/).
 2. Install a Git client for your OS; see the [Git homepage](https://git-scm.com/downloads).
-3. Install dependencies using `yarn install`, as superuser. (Use `Open command prompt (CMD) (admin)` on Windows.) See the [Yarn homepage](https://yarnpkg.com/).
-4. Enable the corepack utility by running `corepack enable`, as superuser. See the [Corepack homepage](https://github.com/nodejs/corepack).
+3. Install dependencies using `yarn install`, as superuser. (Use `Open command prompt (CMD) (admin)` on Windows.)
+   See the [Yarn homepage](https://yarnpkg.com/).
+4. Enable the corepack utility by running `corepack enable`, as superuser.
+   See the [Corepack homepage](https://github.com/nodejs/corepack).
 
 To start working on this project, perform the following steps:
 1. Create a working directory for the project and change into it.
-2. Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git` (adapt the URL to your specific fork and branch). 
+2. Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`
+   (adapt the URL to your specific fork and branch). 
 3. Change into the cloned directory `cd checker-framework-vscode`.
 4. Run `yarn global add vsce`.
 
