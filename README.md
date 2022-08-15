@@ -3,7 +3,6 @@
 This project is an extension for VS Code to provide the features of the [Checker Framework](https://checkerframework.org/),
 via the [Checker Framework Language Server](https://github.com/eisopux/checker-framework-languageserver).
 
-
 ## Getting Started
 
 You can either install the extension from the [VS Code Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace) or install a locally-built version of the extension.Please refer to the "Developer's Guide" below for instructions on how to build from source.
@@ -159,7 +158,6 @@ To build the extension from the command line:
 2. Run `code --install-extension checker-framework-language-server-0.2.0.vsix` 
 
 Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
-
   
 During development, you can simply start the program from the command line and run as a new VS Code instance:
 1.  Install dependencies using `npm install`.
