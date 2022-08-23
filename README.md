@@ -3,6 +3,7 @@
 This project is an extension for VS Code to provide the features of the [Checker Framework](https://checkerframework.org/),
 via the [Checker Framework Language Server](https://github.com/eisopux/checker-framework-languageserver).
 
+
 ## Getting Started
 
 You can either install the extension from the [VS Code Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace) or install a locally-built version of the extension.Please refer to the "Developer's Guide" below for instructions on how to build from source.
@@ -163,6 +164,7 @@ During development, you can simply start the program from the command line and r
 1.  Install dependencies using `npm install`.
 2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run` in the menu bar, then `Start Debugging`. 
 3.  Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
+
 
 ## License
 
