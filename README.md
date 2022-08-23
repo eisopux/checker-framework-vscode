@@ -155,7 +155,8 @@ To start working on this project, perform the following steps:
 To compile the downloader locally: 
 1. Change back into your project working directory. 
 2. Clone the downloader in the project directory `git clone https://github.com/eisopux/checker-framework-languageserver-downloader.git`
-3. Cd into the downloader folder and run `./gradlew assemble`
+3. Change into the downloader folder and run `./gradlew assemble`.
+    See file `[README.md](https://github.com/eisopux/checker-framework-languageserver-downloader/blob/master/README.md)` for more details.
 4. Copy `build/libs/checker-framework-languageserver-downloader-all.jar` to the plugin’s folder and rename it to replace the file `checker-framework-languageserver-downloader-0.2.0.jar`
 
 To build the extension from the command line:
