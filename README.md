@@ -6,13 +6,13 @@ via the [Checker Framework Language Server](https://github.com/eisopux/checker-f
 
 ## Getting Started
 
-You can either install the extension from the 
-[VS Code Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace) 
+You can either install the extension from the
+[VS Code Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace)
 or install a locally-built version of the extension.
 Please refer to the "Developer's Guide" below for instructions on how to build from source.
 
-After installing the extension, when you open or save any `.java` file it will be checked 
-by the Checker Framework [Nullness Checker](https://checkerframework.org/manual/#nullness-checker). 
+After installing the extension, when you open or save any `.java` file it will be checked
+by the Checker Framework [Nullness Checker](https://checkerframework.org/manual/#nullness-checker).
 Other type systems and options can be enabled in the configuration.
 
 The first time the extension is run, two dependencies will be downloaded: the latest version of the
@@ -166,7 +166,8 @@ To build the extension from the command line:
 Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
 During development, you can simply start the program from the command line and run as a new VS Code instance:
 1.  Install dependencies using `npm install`.
-2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run` in the menu bar, then `Start Debugging`. 
+2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`
+    in the menu bar, then `Start Debugging`. 
 3.  Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
 
 
