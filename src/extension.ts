@@ -58,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
     });
   } else launchLS();
 
-  function launchLS() {
+  async function launchLS() {
     let serverOptions: vscodelc.ServerOptions = {
       command: findjava.findJavaExecutable("java"),
       args: getServerArgs(checkerPath, languageServerPath),
@@ -84,9 +84,9 @@ export function activate(context: vscode.ExtensionContext) {
       strings.Misc.pluginName,
       serverOptions,
       clientOptions
-    ).start();
+    );
 
-    client.start();
+    await client.start();
 
     // Push the disposable to the context's subscriptions so that the
     // client can be deactivated on extension deactivation
