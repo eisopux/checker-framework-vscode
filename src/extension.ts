@@ -79,16 +79,18 @@ export function activate(context: vscode.ExtensionContext) {
     };
 
     // Create the language client and start the client.
-    let disposable = new vscodelc.LanguageClient(
+    let client = new vscodelc.LanguageClient(
       strings.Misc.pluginID,
       strings.Misc.pluginName,
       serverOptions,
       clientOptions
     ).start();
 
+    client.start();
+
     // Push the disposable to the context's subscriptions so that the
     // client can be deactivated on extension deactivation
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(client);
   }
 }
 
