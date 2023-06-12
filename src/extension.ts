@@ -88,8 +88,8 @@ export function activate(context: vscode.ExtensionContext) {
 
     await client.start();
 
-    // Push the disposable to the context's subscriptions so that the
-    // client can be deactivated on extension deactivation
+    // Push the client to the context's subscriptions so that the
+    // client can be deactivated on extension deactivation.
     context.subscriptions.push(client);
   }
 }
