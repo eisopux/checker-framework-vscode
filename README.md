@@ -21,7 +21,7 @@ and the [Checker Framework Language Server](https://github.com/eisopux/checker-f
 
 ### Prerequisites
 
-A JDK is required, i.e. `JAVA_HOME` needs to be properly set. JDK versions 8, 9, and 11 are supported. Node.js and yarn are also required.
+A JDK is required, i.e. `JAVA_HOME` needs to be properly set. JDK versions 8, 9, and 11 are supported. Node.js and npm are also required.
 
 ### Configuration
 
@@ -141,8 +141,8 @@ some meaningful syntax in the source file. This option is enabled by default.
 To set up your development environment, perform the following steps:
 1. Install the newest Node.js version for your operating system (OS); see the [Node.Js homepage](https://nodejs.org/en/).
 2. Install a Git client for your OS; see the [Git homepage](https://git-scm.com/downloads).
-3. Install dependencies using `yarn install`, as superuser. (Use `Open command prompt (CMD) (admin)` on Windows.)
-   See the [Yarn homepage](https://yarnpkg.com/).
+3. Install dependencies using `npm install`, as superuser. (Use `Open command prompt (CMD) (admin)` on Windows.)
+   See the [npm homepage](https://www.npmjs.com/).
 4. Enable the corepack utility by running `corepack enable`, as superuser.
    See the [Corepack homepage](https://github.com/nodejs/corepack).
 
@@ -151,7 +151,7 @@ To start working on this project, perform the following steps:
 2. Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`
    (adapt the URL to your specific fork and branch). 
 3. Change into the cloned directory `cd checker-framework-vscode`.
-4. Run `yarn global add vsce`.
+4. Run `npm global add vsce`.
 
 To build the extension from the command line:
 1. In the `checker-framework-vscode` directory, run `vsce package` to generate a `.vsix` file 
@@ -160,7 +160,7 @@ To build the extension from the command line:
 Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
 
 During development, you can simply start the program from the command line and run as a new VS Code instance:
-1.  Install dependencies using `yarn install`.
+1.  Install dependencies using `npm install`.
 2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`
     in the menu bar, then `Start Debugging`. 
 4.  Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
