@@ -80,12 +80,12 @@ Sample setting:
 #### `checkerframework_org`
 
 This specifies from which Github organization to download the Checker Framework release.
-The default is `typetools`.
+The default is `eisop`.
 
 Sample setting:
 
 ```
-"checker-framework.checkerframework_org": "typetools"
+"checker-framework.checkerframework_org": "eisop"
 ```
 
 #### `checkerframework_repo`
@@ -93,7 +93,7 @@ Sample setting:
 This specifies from which Github repository under `checkerframework_org` to download the Checker Framework.
 The default is `checker-framework`.
 
-Combined with `checkerframework_org`, the default Checker Framework is `typetools/checker-framework`.
+Combined with `checkerframework_org`, the default Checker Framework is `eisop/checker-framework`.
 
 Sample setting:
 
