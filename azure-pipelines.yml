@@ -12,7 +12,9 @@ strategy:
 
 pool:
   vmImage: $(imageName)
-
+  
+# Please use Node.js version greater than 18.0 for succussful CI test.
+# TO: Multiple version CI testing
 steps:
 
 - task: NodeTool@0

@@ -80,12 +80,12 @@ Sample setting:
 #### `checkerframework_org`
 
 This specifies from which Github organization to download the Checker Framework release.
-The default is `typetools`.
+The default is `eisop`.
 
 Sample setting:
 
 ```
-"checker-framework.checkerframework_org": "typetools"
+"checker-framework.checkerframework_org": "eisop"
 ```
 
 #### `checkerframework_repo`
@@ -93,7 +93,7 @@ Sample setting:
 This specifies from which Github repository under `checkerframework_org` to download the Checker Framework.
 The default is `checker-framework`.
 
-Combined with `checkerframework_org`, the default Checker Framework is `typetools/checker-framework`.
+Combined with `checkerframework_org`, the default Checker Framework is `eisop/checker-framework`.
 
 Sample setting:
 
@@ -142,9 +142,10 @@ To set up your development environment, perform the following steps:
 1. Install the newest Node.js version for your operating system (OS); see the [Node.Js homepage](https://nodejs.org/en/).
 2. Install a Git client for your OS; see the [Git homepage](https://git-scm.com/downloads).
 3. Install dependencies using `npm install`, as superuser. (Use `Open command prompt (CMD) (admin)` on Windows.)
-   See the [npm homepage](https://www.npmjs.com/).
+ See the [npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install).
 4. Enable the corepack utility by running `corepack enable`, as superuser.
    See the [Corepack homepage](https://github.com/nodejs/corepack).
+5. Run `npm install -g vsce`.
 
 To start working on this project, perform the following steps:
 1. Create a working directory for the project and change into it.
@@ -153,17 +154,26 @@ To start working on this project, perform the following steps:
 3. Change into the cloned directory `cd checker-framework-vscode`.
 4. Run `npm global add vsce`.
 
+
+To compile the downloader locally: 
+1. Change back into your project working directory. 
+2. Clone the downloader in the project directory `git clone https://github.com/eisopux/checker-framework-languageserver-downloader.git`
+3. Change into the downloader folder and run `./gradlew assemble`.
+   See file `[README.md](https://github.com/eisopux/checker-framework-languageserver-downloader/blob/master/README.md)` for more details.
+4. Copy `build/libs/checker-framework-languageserver-downloader-all.jar` to the plugin’s folder and rename it to replace the file `checker-framework-languageserver-downloader-0.2.0.jar`
+
+
 To build the extension from the command line:
 1. In the `checker-framework-vscode` directory, run `vsce package` to generate a `.vsix` file 
-2. Run `code --install-extension my-extension-0.0.1.vsix`, replacing `my-extension-0.0.1.vsix` with the created `.vsix` file. 
+2. Run `code --install-extension checker-framework-language-server-0.2.0.vsix` 
 
 Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
-
 During development, you can simply start the program from the command line and run as a new VS Code instance:
+
 1.  Install dependencies using `npm install`.
 2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`
     in the menu bar, then `Start Debugging`. 
-4.  Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
+3. Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
 
 
 ## License
