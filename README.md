@@ -167,8 +167,8 @@ To build the extension from the command line:
 
 Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
 During development, you can simply start the program from the command line and run as a new VS Code instance:
-1.  Install dependencies using `npm install`.
-2.  Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`
+1. Install dependencies using `npm install`.
+2. Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`
     in the menu bar, then `Start Debugging`. 
 3. Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
 
