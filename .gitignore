@@ -3,3 +3,4 @@ node_modules
 download
 .vscode
 yarn.lock
+package-lock.json

@@ -29,6 +29,10 @@ steps:
   condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))
 
 - bash: |
+    echo ">>> Set up environment" 
+    npm install
+
+- bash: |
     echo ">>> Compile checker-framework-vscode"
     npm run compile
     # Don't have the echo below, as it masks a failure from the npm commands.
