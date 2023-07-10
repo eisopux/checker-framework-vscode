@@ -30,12 +30,12 @@ steps:
 
 - bash: |
     echo ">>> Compile checker-framework-vscode"
-    npm && npm compile
+    npm run build
     # Don't have the echo below, as it masks a failure from the npm commands.
     # echo ">>> Compiled checker-framework-vscode"
     #    cd sample
     #    echo ">>> Run sample integration test"
-    #    npm && npm compile && npm test
+    #    npm run build && npm run test
   displayName: Run Tests
   env:
     DISPLAY: ':99.0'
