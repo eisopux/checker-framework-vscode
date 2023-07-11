@@ -30,7 +30,7 @@ steps:
 
 - bash: |
     echo ">>> Set up environment" 
-    npm install
+    npm ci
 
 - bash: |
     echo ">>> Compile checker-framework-vscode"
