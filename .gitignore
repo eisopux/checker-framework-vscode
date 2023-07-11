@@ -2,4 +2,3 @@ out
 node_modules
 download
 .vscode
-package-lock.json
