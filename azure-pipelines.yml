@@ -29,13 +29,18 @@ steps:
   condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))
 
 - bash: |
+    echo ">>> Set up environment" 
+    npm ci
+
+- bash: |
     echo ">>> Compile checker-framework-vscode"
-    yarn && yarn compile
-    # Don't have the echo below, as it masks a failure from the yarn commands.
+    npm run compile
+    # Don't have the echo below, as it masks a failure from the npm commands.
     # echo ">>> Compiled checker-framework-vscode"
     #    cd sample
     #    echo ">>> Run sample integration test"
-    #    yarn && yarn compile && yarn test
+    #    TODO: add tests
+    #    npm run compile
   displayName: Run Tests
   env:
     DISPLAY: ':99.0'

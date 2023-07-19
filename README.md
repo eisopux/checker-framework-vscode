@@ -21,7 +21,7 @@ and the [Checker Framework Language Server](https://github.com/eisopux/checker-f
 
 ### Prerequisites
 
-A JDK is required, i.e. `JAVA_HOME` needs to be properly set. JDK versions 8, 9, and 11 are supported. Node.js and yarn are also required.
+A JDK is required, i.e. `JAVA_HOME` needs to be properly set. JDK versions 8, 9, and 11 are supported. Node.js and npm are also required.
 
 ### Configuration
 
@@ -151,6 +151,8 @@ To start working on this project, perform the following steps:
 1. Create a working directory for the project and change into it.
 2. Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`
    (adapt the URL to your specific fork and branch). 
+3. Change into the cloned directory `cd checker-framework-vscode`.
+4. Run `npm global add vsce`.
 
 To compile the downloader locally: 
 1. Change back into your project working directory. 
