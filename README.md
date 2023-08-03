@@ -152,7 +152,7 @@ To start working on this project, perform the following steps:
 2. Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`
    (adapt the URL to your specific fork and branch). 
 3. Change into the cloned directory `cd checker-framework-vscode`.
-4. Run `npm global add @vscode/vsce`.
+4. Run `npm add -g @vscode/vsce`.
 
 To compile the downloader locally: 
 1. Change back into your project working directory. 
