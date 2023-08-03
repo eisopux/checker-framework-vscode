@@ -145,14 +145,14 @@ To set up your development environment, perform the following steps:
    See the [npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install).
 4. Enable the corepack utility by running `corepack enable`, as superuser.
    See the [Corepack homepage](https://github.com/nodejs/corepack).
-5. Run `npm install -g vsce`.
+5. Run `npm install -g @vscode/vsce`.
 
 To start working on this project, perform the following steps:
 1. Create a working directory for the project and change into it.
 2. Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`
    (adapt the URL to your specific fork and branch). 
 3. Change into the cloned directory `cd checker-framework-vscode`.
-4. Run `npm global add vsce`.
+4. Run `npm global add @vscode/vsce`.
 
 To compile the downloader locally: 
 1. Change back into your project working directory. 
