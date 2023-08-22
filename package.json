@@ -25,7 +25,7 @@
     "@types/node": "^20.5.1",
     "@types/vscode": "^1.81.0",
     "husky": "^8.0.0",
-    "lint-staged": "^14.0.0",
+    "lint-staged": "^14.0.1",
     "prettier": "3.0.2",
     "typescript": "^5.0.4"
   },
