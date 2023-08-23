@@ -2,3 +2,4 @@ out
 node_modules
 download
 .vscode
+checker-framework-language-server-*.vsix
