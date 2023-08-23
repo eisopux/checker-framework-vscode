@@ -159,7 +159,7 @@ To compile the downloader locally:
 2. Clone the downloader in the project directory `git clone https://github.com/eisopux/checker-framework-languageserver-downloader.git`
 3. Change into the downloader folder and run `./gradlew assemble`.
    See file `[README.md](https://github.com/eisopux/checker-framework-languageserver-downloader/blob/master/README.md)` for more details.
-4. Copy `build/libs/checker-framework-languageserver-downloader-all.jar` to the plugin’s folder and rename it to replace the file `checker-framework-languageserver-downloader-0.2.0.jar`
+4. Copy `build/libs/checker-framework-languageserver-downloader-all.jar` to the plugin’s folder and rename it to replace the file `checker-framework-languageserver-downloader.jar`
 
 To build the extension from the command line:
 1. In the `checker-framework-vscode` directory, run `vsce package` to generate a `.vsix` file 
