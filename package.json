@@ -22,7 +22,7 @@
     "vscode-uri": "^3.0.2"
   },
   "devDependencies": {
-    "@types/node": "^20.5.3",
+    "@types/node": "^20.5.4",
     "@types/vscode": "^1.81.0",
     "husky": "^8.0.0",
     "lint-staged": "^14.0.1",
@@ -93,7 +93,8 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "npm run compile; npm run get-downloader-release",
+    "get-downloader-release": "./scripts/get-downloader-release.sh",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./"
   },
