@@ -141,18 +141,24 @@ some meaningful syntax in the source file. This option is enabled by default.
 
 ### Building from source
 
+#### Setting up environment 
+
 1. Install the newest Node.js version for your operating system (OS); see the [Node.Js homepage](https://nodejs.org/en/).
 2. Install a Git client for your OS; see the [Git homepage](https://git-scm.com/downloads).
-3. Create a working directory for the project and change into it.
-4. Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`
-5. Change into the cloned directory `cd checker-framework-vscode`.
-6. Install dependencies using `npm install`, as superuser. (Use `Open command prompt (CMD) (admin)` on Windows.) See the [npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install).
-7.  Run `npm install -g @vscode/vsce`, as superuser.
-8. Run `npm add -g @vscode/vsce`.
-9. In the `checker-framework-vscode` directory, run `vsce package` to generate a `.vsix` file 
-10. Run `code --install-extension checker-framework-language-server-0.2.0.vsix` 
+3. Run `npm install -g @vscode/vsce`, as superuser.
+4. Run `npm add -g @vscode/vsce`.
+
+#### Building extension
+
+1. Create a working directory for the project and change into it.
+2.  Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`
+3. Change into the cloned directory `cd checker-framework-vscode`.
+4. Install dependencies using `npm install`, as superuser. (Use `Open command prompt (CMD) (admin)` on Windows.) See the [npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install).
+5.  Run `vsce package` to generate a `.vsix` file 
+6.  Run `code --install-extension checker-framework-language-server-0.2.0.vsix` 
    
 ### Test local downloader: 
+
 1. Change back into your project working directory. 
 2. Clone the downloader in the project directory `git clone https://github.com/eisopux/checker-framework-languageserver-downloader.git`
 3. Change into the downloader folder and run `./gradlew assemble`.
@@ -160,6 +166,7 @@ some meaningful syntax in the source file. This option is enabled by default.
 4. Copy `build/libs/checker-framework-languageserver-downloader-all.jar` to the plugin’s folder and rename it to replace the file `checker-framework-languageserver-downloader.jar`
 
 ### Test local language server or checkerframework:
+
 After successfully build from source, change the path in `.vscode/setting.json` like the following code. 
 ```json
 {
@@ -171,6 +178,7 @@ After successfully build from source, change the path in `.vscode/setting.json` 
 save the file and restart Visual Studio code.
 
 ### Trouble shooting:
+
 Use the Toggle Developer Tools to get log information in command Palette in Visual Studio Code.
 
 ## License
