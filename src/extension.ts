@@ -100,7 +100,7 @@ function downloadDeps(callback: Function) {
     path.join(
       __dirname,
       "..",
-      "/checker-framework-languageserver-downloader-0.2.0.jar"
+      "/checker-framework-languageserver-downloader.jar"
     ),
     "-dest",
     path.join(__dirname, "..", "download"),
