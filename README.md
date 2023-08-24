@@ -139,7 +139,8 @@ some meaningful syntax in the source file. This option is enabled by default.
 
 ## Developer's Guide
 
-### Build from source
+### Building from source
+
 1. Install the newest Node.js version for your operating system (OS); see the [Node.Js homepage](https://nodejs.org/en/).
 2. Install a Git client for your OS; see the [Git homepage](https://git-scm.com/downloads).
 3. Create a working directory for the project and go into it.
