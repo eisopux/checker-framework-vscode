@@ -12,7 +12,7 @@ or install a locally-built version of the extension.
 Please refer to the [Build from source](#build-from-source) section below for instructions on how to build from source.
 
 After installing the extension, when you open or save any `.java` file it will be checked
-by the Checker Framework [Nullness Checker](https://checkerframework.org/manual/#nullness-checker).
+by the Checker Framework [Nullness Checker](https://eisop.github.io/cf/manual/manual.html#nullness-checker).
 Other type systems and options can be enabled in the [configuration](#configuration).
 
 The first time the extension is run, two dependencies will be downloaded: the latest version of the
