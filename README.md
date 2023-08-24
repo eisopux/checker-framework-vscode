@@ -9,7 +9,7 @@ via the [Checker Framework Language Server](https://github.com/eisopux/checker-f
 You can either install the extension from the
 [VS Code Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace)
 or install a locally-built version of the extension.
-Please refer to the "Developer's Guide" below for instructions on how to build from source.
+Please refer to the `[link]#Build from source` section below for instructions on how to build from source.
 
 After installing the extension, when you open or save any `.java` file it will be checked
 by the Checker Framework [Nullness Checker](https://checkerframework.org/manual/#nullness-checker).
@@ -48,7 +48,7 @@ A JDK is required, i.e. `JAVA_HOME` needs to be properly set. JDK versions 8, 9,
 
 ### Test local language server or checkerframework:
 After successfully build from source, change the path in `.vscode/setting.json` like the following code. 
-```{
+```json{
     "checker-framework.frameworkPath": "/path/to/custom/framework",
     "checker-framework.languageServerPath": "/path/to/custom/languageserver.jar"
 }
