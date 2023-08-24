@@ -48,7 +48,8 @@ A JDK is required, i.e. `JAVA_HOME` needs to be properly set. JDK versions 8, 9,
 
 ### Test local language server or checkerframework:
 After successfully build from source, change the path in `.vscode/setting.json` like the following code. 
-```json{
+```json
+{
     "checker-framework.frameworkPath": "/path/to/custom/framework",
     "checker-framework.languageServerPath": "/path/to/custom/languageserver.jar"
 }
