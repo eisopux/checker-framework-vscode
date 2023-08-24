@@ -13,7 +13,7 @@ Please refer to the [Build from source](#build-from-source) section below for in
 
 After installing the extension, when you open or save any `.java` file it will be checked
 by the Checker Framework [Nullness Checker](https://checkerframework.org/manual/#nullness-checker).
-Other type systems and options can be enabled in the configuration.
+Other type systems and options can be enabled in the [configuration](#configuration).
 
 The first time the extension is run, two dependencies will be downloaded: the latest version of the
 Checker Framework ([eisop/checker-framework](https://github.com/eisop/checker-framework))
@@ -59,7 +59,7 @@ save the file and restart Visual Studio code.
 ### Trouble shooting:
 Use the Toggle Developer Tools to get log information in command Palette in Visual Studio Code.
 
-### Configuration
+## Configuration
 
 The following configuration parameters are available:
 
