@@ -27,7 +27,7 @@
     "husky": "^8.0.0",
     "lint-staged": "^14.0.1",
     "prettier": "3.0.2",
-    "typescript": "^5.0.4"
+    "typescript": "^5.2.2"
   },
   "activationEvents": [
     "onLanguage:java"
