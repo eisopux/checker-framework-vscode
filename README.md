@@ -148,7 +148,7 @@ some meaningful syntax in the source file. This option is enabled by default.
 3. Run `npm install -g @vscode/vsce`, as superuser.
 4. Run `npm add -g @vscode/vsce`.
 
-#### Building extension
+#### Building the extension
 
 1. Create a working directory for the project and change into it.
 2.  Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`
