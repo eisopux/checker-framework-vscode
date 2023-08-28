@@ -3,3 +3,4 @@ node_modules
 download
 .vscode
 checker-framework-language-server-*.vsix
+checker-framework-languageserver-downloader.jar
