@@ -159,8 +159,9 @@ some meaningful syntax in the source file. This option is enabled by default.
 7. Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
 
 During development, you can simply start the program from the command line and run as a new VS Code instance:
-1. Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`in the menu bar, then `Start Debugging`. 
-2. Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
+1. Follow the [Building from source](#build-from-source) instructions.
+2. Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`in the menu bar, then `Start Debugging`. 
+3. Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
 
 ### Using a local downloader
 
