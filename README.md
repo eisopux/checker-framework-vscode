@@ -157,7 +157,7 @@ some meaningful syntax in the source file. This option is enabled by default.
 5.  Run `vsce package` to generate a `.vsix` file.
 6.  Run `code --install-extension checker-framework-language-server-0.2.0.vsix`; replace the `-0.2.0` with the current version number.
    
-### Test local downloader: 
+### Using a local downloader
 
 1. Change back into your project working directory. 
 2. Clone the downloader in the project directory `git clone https://github.com/eisopux/checker-framework-languageserver-downloader.git`
