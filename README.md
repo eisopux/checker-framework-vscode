@@ -167,7 +167,8 @@ some meaningful syntax in the source file. This option is enabled by default.
 
 ### Test local language server or checkerframework:
 
-You can use your local checker-framework and language server. Update the appropriate field in `.vscode/settings.json` with your custom path like the following example.
+You can use a local language server or Checker Framework. Update the appropriate field in `.vscode/settings.json` with your custom path, like in the following example:
+
 ```json
 {
     "checker-framework.frameworkPath": "/path/to/custom/framework",
