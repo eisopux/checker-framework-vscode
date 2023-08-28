@@ -176,7 +176,7 @@ You can use a local language server or Checker Framework. Update the appropriate
 }
 ```
 
-save the file and restart Visual Studio code.
+Save the file and restart Visual Studio Code.
 
 ### Trouble shooting:
 
