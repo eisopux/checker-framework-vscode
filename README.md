@@ -154,9 +154,10 @@ some meaningful syntax in the source file. This option is enabled by default.
 2. Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`.
 3. Change into the cloned directory `cd checker-framework-vscode`.
 4. Install dependencies using `npm install`, as superuser. (Use `Open command prompt (CMD) (admin)` on Windows.) See the [npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install).
-5.  Run `vsce package` to generate a `.vsix` file.
-6.  Run `code --install-extension checker-framework-language-server-0.2.0.vsix`; replace the `-0.2.0` with the current version number.
-   
+5. Run `vsce package` to generate a `.vsix` file.
+6. Run `code --install-extension checker-framework-language-server-0.2.0.vsix`; replace the `-0.2.0` with the current version number.
+7. Under `View -> Extensions` in VS Code check that the 'checker-framework-language-server' is installed. 
+
 ### Using a local downloader
 
 1. Change back into your project working directory. 
@@ -166,7 +167,6 @@ some meaningful syntax in the source file. This option is enabled by default.
 4. Copy `build/libs/checker-framework-languageserver-downloader-all.jar` to the plugin’s folder and rename it to replace the file `checker-framework-languageserver-downloader.jar`
 
 ### Using a local language server or Checker Framework
-
 You can use a local language server or Checker Framework. Update the appropriate field in `.vscode/settings.json` with your custom path, like in the following example:
 
 ```json
