@@ -151,7 +151,7 @@ some meaningful syntax in the source file. This option is enabled by default.
 #### Building the extension
 
 1. Create a working directory for the project and change into it.
-2.  Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`
+2. Clone the project in the new directory `git clone https://github.com/eisopux/checker-framework-vscode.git`.
 3. Change into the cloned directory `cd checker-framework-vscode`.
 4. Install dependencies using `npm install`, as superuser. (Use `Open command prompt (CMD) (admin)` on Windows.) See the [npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install).
 5.  Run `vsce package` to generate a `.vsix` file.
