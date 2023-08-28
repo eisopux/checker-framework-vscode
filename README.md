@@ -141,7 +141,7 @@ some meaningful syntax in the source file. This option is enabled by default.
 
 ### Building from source
 
-#### Setting up environment 
+#### Setting up the environment 
 
 1. Install the newest Node.js version for your operating system (OS); see the [Node.Js homepage](https://nodejs.org/en/).
 2. Install a Git client for your OS; see the [Git homepage](https://git-scm.com/downloads).
