@@ -180,7 +180,7 @@ save the file and restart Visual Studio code.
 
 ### Trouble shooting:
 
-Use the Toggle Developer Tools to get log information in command Palette in Visual Studio Code.
+To get log information use `Toggle Developer Tools` in the `Command Palette` in Visual Studio Code.
 
 ## License
 
