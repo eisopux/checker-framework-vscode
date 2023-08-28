@@ -165,7 +165,7 @@ some meaningful syntax in the source file. This option is enabled by default.
    See file `[README.md](https://github.com/eisopux/checker-framework-languageserver-downloader/blob/master/README.md)` for more details.
 4. Copy `build/libs/checker-framework-languageserver-downloader-all.jar` to the plugin’s folder and rename it to replace the file `checker-framework-languageserver-downloader.jar`
 
-### Test local language server or checkerframework:
+### Using a local language server or Checker Framework
 
 You can use a local language server or Checker Framework. Update the appropriate field in `.vscode/settings.json` with your custom path, like in the following example:
 
