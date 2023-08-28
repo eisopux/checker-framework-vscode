@@ -93,8 +93,8 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile; npm run get-downloader-release",
-    "get-downloader-release": "./scripts/get-downloader-release.sh",
+    "vscode:prepublish": "npm run compile && npm run get-downloader-release",
+    "get-downloader-release": "node ./scripts/get-downloader-release.js",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./"
   },
