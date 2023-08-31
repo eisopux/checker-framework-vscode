@@ -160,7 +160,7 @@ some meaningful syntax in the source file. This option is enabled by default.
 
 During development, you can simply start the program from the command line and run as a new VS Code instance:
 1. Follow the [Building from source](#build-from-source) instructions.
-2. Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run`in the menu bar, then `Start Debugging`. 
+2. Open up this project (`checker-framework-vscode`) in VS Code and start a new instance by clicking on `Run` in the menu bar, then `Start Debugging`. 
 3. Open a `.java` file (this can be a simple Hello World example) in the `[Extension Development Host]` instance of VSCode.
 
 ### Using a local downloader
@@ -172,6 +172,7 @@ During development, you can simply start the program from the command line and r
 4. Copy `build/libs/checker-framework-languageserver-downloader-all.jar` to the plugin’s folder and rename it to replace the file `checker-framework-languageserver-downloader.jar`
 
 ### Using a local language server or Checker Framework
+
 You can use a local language server or Checker Framework. Update the appropriate field in `.vscode/settings.json` with your custom path, like in the following example:
 
 ```json
@@ -183,7 +184,7 @@ You can use a local language server or Checker Framework. Update the appropriate
 
 Save the file and restart Visual Studio Code.
 
-### Trouble shooting:
+### Trouble shooting
 
 To get log information use `Toggle Developer Tools` in the `Command Palette` in Visual Studio Code.
 
