@@ -44,3 +44,13 @@ steps:
   displayName: Run Tests
   env:
     DISPLAY: ':99.0'
+
+- bash: |
+    echo ">>> Check for downloader release"
+    npm run get-downloader-release
+    if [ -f "checker-framework-languageserver-downloader.jar" ]; then
+        echo "Download successful."
+    else
+        echo "Download failed." && exit 1
+    fi
+  displayName: Check for downloader release
