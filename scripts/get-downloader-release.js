@@ -6,7 +6,8 @@ const API_URL = `https://api.github.com/repos/${REPO}/releases/latest`;
 const JAR = "./checker-framework-languageserver-downloader.jar";
 
 function downloadFile(url, destination, callback) {
-    https.get(url, (response) => {
+    https.get(url, (response) => { 
+        // 302 is the HTTP status code for a temporary redirect. 
         if (response.statusCode === 302) {
             downloadFile(response.headers.location, destination, callback);
             return;
