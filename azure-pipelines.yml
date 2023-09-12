@@ -54,3 +54,8 @@ steps:
         echo "Download failed." && exit 1
     fi
   displayName: Check for downloader release
+
+- bash: |
+    echo ">>> Check for vsce functionality"
+    npm run vsce
+  displayName: Check for vsce functionality
