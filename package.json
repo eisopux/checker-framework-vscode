@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/node": "^20.6.0",
     "@types/vscode": "^1.82.0",
+    "@vscode/vsce": "^2.10.0",
     "husky": "^8.0.0",
     "lint-staged": "^14.0.1",
     "prettier": "3.0.3",
@@ -96,7 +97,8 @@
     "vscode:prepublish": "npm run compile && npm run get-downloader-release",
     "get-downloader-release": "node ./scripts/get-downloader-release.js",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "vsce": "vsce package"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown src/*.js"
