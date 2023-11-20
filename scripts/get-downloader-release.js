@@ -37,8 +37,10 @@ https.get(API_URL, {
         const downloadUrl = jsonResponse.assets[0].browser_download_url;
         downloadFile(downloadUrl, JAR, () => {
             console.log(`Downloaded the latest release to ${JAR}.`);
+            process.exit(0); 
         });
     });
 }).on('error', (error) => {
     console.error(`Got error: ${error.message}`);
+    process.exit(1);
 });
