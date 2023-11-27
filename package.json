@@ -26,7 +26,7 @@
     "@types/vscode": "^1.83.1",
     "@vscode/vsce": "^2.22.0",
     "husky": "^8.0.0",
-    "lint-staged": "^15.0.1",
+    "lint-staged": "^15.1.0",
     "prettier": "3.0.3",
     "typescript": "^5.2.2"
   },
