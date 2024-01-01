@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "decompress-zip": "^0.3.2",
-    "follow-redirects": "^1.15.3",
+    "follow-redirects": "^1.15.4",
     "vscode-languageclient": "^9.0.1",
     "vscode-uri": "^3.0.8"
   },
