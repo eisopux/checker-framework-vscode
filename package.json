@@ -13,7 +13,7 @@
     "Linters"
   ],
   "engines": {
-    "vscode": "^1.84.2"
+    "vscode": "^1.85.0"
   },
   "dependencies": {
     "decompress-zip": "^0.3.2",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
-    "@types/vscode": "^1.84.2",
+    "@types/vscode": "^1.85.0",
     "@vscode/vsce": "^2.22.0",
     "husky": "^8.0.0",
     "lint-staged": "^15.2.0",
