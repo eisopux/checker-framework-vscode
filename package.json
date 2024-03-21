@@ -1,14 +1,14 @@
 {
-  "name": "checker-framework-language-server",
-  "description": "LSP client for the Checker Framework",
+  "name": "checker-framework-vscode",
+  "description": "LSP client for the EISOP Checker Framework",
   "author": "eisopux",
   "license": "MIT",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/eisopux/checker-framework-vscode.git"
   },
-  "publisher": "zhangjiangqige",
+  "publisher": "eisopux",
   "categories": [
     "Linters"
   ],
@@ -47,7 +47,7 @@
           "default": [
             "org.checkerframework.checker.nullness.NullnessChecker"
           ],
-          "description": "List of checkers enabled for compilation. More details in: https://checkerframework.org/manual/#running"
+          "description": "List of checkers enabled for compilation. More details in: https://eisop.github.io/cf/manual/manual.html#running"
         },
         "checker-framework.frameworkPath": {
           "type": "string",
@@ -73,22 +73,22 @@
         "checker-framework.checkerframework_org": {
           "type": "string",
           "default": "eisop",
-          "description": "From which Github organization to download Checker Framework."
+          "description": "From which Github organization to download the Checker Framework."
         },
         "checker-framework.checkerframework_repo": {
           "type": "string",
           "default": "checker-framework",
-          "description": "From which Github repository under checkerframework_org to download Checker Framework."
+          "description": "From which Github repository under checkerframework_org to download the Checker Framework."
         },
         "checker-framework.languageserver_org": {
           "type": "string",
           "default": "eisopux",
-          "description": "From which Github organization to download language server."
+          "description": "From which Github organization to download the language server."
         },
         "checker-framework.languageserver_repo": {
           "type": "string",
           "default": "checker-framework-languageserver",
-          "description": "From which Github repository under checkerframework_org to download language server."
+          "description": "From which Github repository under languageserver_org to download the language server."
         }
       }
     }
