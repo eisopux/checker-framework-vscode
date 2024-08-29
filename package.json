@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.5.1",
-    "@types/vscode": "^1.91.0",
+    "@types/vscode": "^1.92.0",
     "@vscode/vsce": "^3.0.0",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.9",
