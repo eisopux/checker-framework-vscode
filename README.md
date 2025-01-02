@@ -1,6 +1,6 @@
 # Checker Framework for VS Code
 
-This project is an extension for VS Code to provide the features of the [Checker Framework](https://checkerframework.org/),
+This project is an extension for VS Code to provide the features of the [EISOP Checker Framework](https://eisop.github.io/cf/),
 via the [Checker Framework Language Server](https://github.com/eisopux/checker-framework-languageserver).
 
 
@@ -145,6 +145,12 @@ some meaningful syntax in the source file. This option is enabled by default.
 
 1. Install the newest Node.js version for your operating system (OS); see the [Node.Js homepage](https://nodejs.org/en/).
 2. Install a Git client for your OS; see the [Git homepage](https://git-scm.com/downloads).
+
+Easiest way to install npm/nodejs seems to be nvm.
+It does not require a ton of packages and supports multiple versions.
+See https://github.com/nvm-sh/nvm
+
+After updating `package.json` run `npm install` to update the lock file.
 
 #### Building the extension
 
