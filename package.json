@@ -22,7 +22,7 @@
     "vscode-uri": "^3.0.8"
   },
   "devDependencies": {
-    "@types/node": "^22.12.0",
+    "@types/node": "^22.13.0",
     "@types/vscode": "^1.96.0",
     "@vscode/vsce": "^3.2.2",
     "husky": "^9.1.7",
