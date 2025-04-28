@@ -13,7 +13,7 @@
     "Linters"
   ],
   "engines": {
-    "vscode": "^1.98.0"
+    "vscode": "^1.99.1"
   },
   "dependencies": {
     "decompress-zip": "^0.3.2",
