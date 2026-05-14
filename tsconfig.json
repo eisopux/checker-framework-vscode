@@ -4,6 +4,8 @@
     "target": "es6",
     "outDir": "out",
     "lib": ["es6", "dom"],
+    // @types/node v25 pulls in Symbol.dispose-aware iterator typings that are
+    // incompatible with vscode-jsonrpc's LinkedMap declarations.
     "skipLibCheck": true,
     "sourceMap": true,
     "rootDir": "src"
