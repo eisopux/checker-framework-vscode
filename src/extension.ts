@@ -59,8 +59,15 @@ export function activate(context: vscode.ExtensionContext) {
   } else launchLS();
 
   async function launchLS() {
+    const javaExecutable = findjava.findJavaExecutable("java");
+    if (javaExecutable === null) {
+      vscode.window.showErrorMessage(
+        "Could not find a Java executable in JAVA_HOME or PATH."
+      );
+      return;
+    }
     let serverOptions: vscodelc.ServerOptions = {
-      command: findjava.findJavaExecutable("java"),
+      command: javaExecutable,
       args: getServerArgs(checkerPath, languageServerPath),
     };
 
@@ -172,7 +179,15 @@ function getServerArgs(checkerPath: string, fatjarPath: string) {
 }
 
 function getConfig<T>(name: string): T {
-  return vscode.workspace.getConfiguration(strings.Misc.pluginID).get<T>(name);
+  const value = vscode.workspace
+    .getConfiguration(strings.Misc.pluginID)
+    .get<T>(name);
+  if (value === undefined) {
+    throw new Error(
+      `Missing configuration for ${name}. Open Settings and search for ${strings.Misc.pluginID}.${name}.`
+    );
+  }
+  return value;
 }
 
 function setConfig<T>(name: string, value: any): Thenable<void> {
