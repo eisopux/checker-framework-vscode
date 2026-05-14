@@ -35,7 +35,7 @@ export function findJavaExecutable(binname: string) {
   }
 
   // Else return the binary name directly (this will likely always fail downstream)
-  return null;
+  return binname;
 }
 
 function correctBinname(binname: string) {
