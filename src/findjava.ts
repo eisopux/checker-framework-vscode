@@ -9,7 +9,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-export function findJavaExecutable(binname: string) {
+export function findJavaExecutable(binname: string): string | null {
   binname = correctBinname(binname);
 
   // First search each JAVA_HOME bin folder
@@ -34,9 +34,7 @@ export function findJavaExecutable(binname: string) {
     }
   }
 
-  // Else return the binary name directly (this will likely always fail downstream)
-  console.warn(`Could not find Java executable on JAVA_HOME or PATH: ${binname}`);
-  return binname;
+  return null;
 }
 
 function correctBinname(binname: string) {
