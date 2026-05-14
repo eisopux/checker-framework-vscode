@@ -73,19 +73,7 @@ function getAssetDownloadUrl(release) {
             asset.name.endsWith('.jar') &&
             typeof asset.browser_download_url === 'string'
     );
-    if (jarAsset) {
-        return jarAsset.browser_download_url;
-    }
-
-    const firstAsset = release.assets.find(
-        (asset) => typeof asset.browser_download_url === 'string'
-    );
-    if (firstAsset) {
-        const releaseTag = typeof release.tag_name === 'string' ? release.tag_name : 'unknown';
-        console.warn(`No .jar asset found for release ${releaseTag}; falling back to first available asset.`);
-        return firstAsset.browser_download_url;
-    }
-    return null;
+    return jarAsset ? jarAsset.browser_download_url : null;
 }
 
 function downloadFromReleaseAssets(downloadUrl) {
@@ -107,14 +95,18 @@ requestJson(API_URL, (latestRelease) => {
             console.error(`Unexpected releases payload from ${RELEASES_URL}.`);
             process.exit(1);
         }
-        const fallbackDownloadUrl = releases
-            .map((release) => getAssetDownloadUrl(release))
-            .find((downloadUrl) => downloadUrl !== null);
+        let fallbackDownloadUrl = null;
+        for (const release of releases) {
+            fallbackDownloadUrl = getAssetDownloadUrl(release);
+            if (fallbackDownloadUrl) {
+                break;
+            }
+        }
         if (fallbackDownloadUrl) {
             downloadFromReleaseAssets(fallbackDownloadUrl);
             return;
         }
-        console.error('No downloadable release assets found after checking latest release and all releases.');
+        console.error('No downloadable .jar release assets found after checking latest release and all releases.');
         process.exit(1);
     });
 });
