@@ -172,7 +172,13 @@ function getServerArgs(checkerPath: string, fatjarPath: string) {
 }
 
 function getConfig<T>(name: string): T {
-  return vscode.workspace.getConfiguration(strings.Misc.pluginID).get<T>(name)!;
+  const value = vscode.workspace
+    .getConfiguration(strings.Misc.pluginID)
+    .get<T>(name);
+  if (value === undefined) {
+    throw new Error(`Missing configuration for ${name}`);
+  }
+  return value;
 }
 
 function setConfig<T>(name: string, value: any): Thenable<void> {
