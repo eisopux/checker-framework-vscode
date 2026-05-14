@@ -11,7 +11,7 @@ function downloadFile(url, destination, callback) {
         // 302 is the HTTP status code for a temporary redirect. 
         if (response.statusCode === 302) {
             if (!response.headers.location) {
-                console.error(`Redirect response did not include a location for ${url}.`);
+                console.error(`Redirect response (302) missing required Location header for ${url}.`);
                 process.exit(1);
             }
             downloadFile(response.headers.location, destination, callback);
@@ -69,16 +69,16 @@ function getAssetDownloadUrl(release) {
 
     const jarAsset = release.assets.find(
         (asset) =>
-            typeof asset?.name === 'string' &&
+            typeof asset.name === 'string' &&
             asset.name.endsWith('.jar') &&
-            typeof asset?.browser_download_url === 'string'
+            typeof asset.browser_download_url === 'string'
     );
     if (jarAsset) {
         return jarAsset.browser_download_url;
     }
 
     const firstAsset = release.assets.find(
-        (asset) => typeof asset?.browser_download_url === 'string'
+        (asset) => typeof asset.browser_download_url === 'string'
     );
     return firstAsset ? firstAsset.browser_download_url : null;
 }
