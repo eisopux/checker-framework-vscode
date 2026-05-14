@@ -176,7 +176,9 @@ function getConfig<T>(name: string): T {
     .getConfiguration(strings.Misc.pluginID)
     .get<T>(name);
   if (value === undefined) {
-    throw new Error(`Missing configuration for ${name}`);
+    throw new Error(
+      `Missing configuration for ${name}. Please configure checker-framework.${name} in settings.`
+    );
   }
   return value;
 }
