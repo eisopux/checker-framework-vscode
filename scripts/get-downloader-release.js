@@ -11,7 +11,7 @@ function downloadFile(url, destination, callback) {
         // 302 is the HTTP status code for a temporary redirect. 
         if (response.statusCode === 302) {
             if (!response.headers.location) {
-                console.error(`Redirect response (302) missing required Location header for ${url}.`);
+                console.error(`Redirect response (302) missing Location header for ${url}.`);
                 process.exit(1);
             }
             downloadFile(response.headers.location, destination, callback);
@@ -80,7 +80,11 @@ function getAssetDownloadUrl(release) {
     const firstAsset = release.assets.find(
         (asset) => typeof asset.browser_download_url === 'string'
     );
-    return firstAsset ? firstAsset.browser_download_url : null;
+    if (firstAsset) {
+        console.warn(`No .jar asset found for release ${release.tag_name}; falling back to first available asset.`);
+        return firstAsset.browser_download_url;
+    }
+    return null;
 }
 
 function downloadFromReleaseAssets(downloadUrl) {
@@ -109,7 +113,7 @@ requestJson(API_URL, (latestRelease) => {
                 return;
             }
         }
-        console.error('No downloadable release assets found.');
+        console.error('No downloadable release assets found after checking latest release and all releases.');
         process.exit(1);
     });
 });
