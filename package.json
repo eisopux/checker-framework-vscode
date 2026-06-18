@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/node": "^25.7.0",
     "@types/vscode": "^1.120.0",
-    "@vscode/vsce": "^3.9.1",
+    "@vscode/vsce": "^3.9.2",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",
     "prettier": "3.8.3",
