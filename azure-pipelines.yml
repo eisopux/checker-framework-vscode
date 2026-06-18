@@ -17,9 +17,9 @@ pool:
 # TO: Multiple version CI testing
 steps:
 
-- task: NodeTool@0
+- task: UseNode@1
   inputs:
-    versionSpec: '18.x'
+    version: '24.x'
   displayName: 'Install Node.js'
 
 - bash: |
